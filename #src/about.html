@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ru" data-set-font-size>
+@@include('_head.html',{
+"title": "Laser Store"
+})
+
+<body>
+    <!-- == TOP LINE ================== -->
+
+    @@include('common/header/_header.html')
+    <!-- == // TOP LINE ================== -->
+
+    <main class="_page about-page" data-padding-top-header-size>
+        <div class="head container-sm">
+            <div class="head__nav">
+                @@include('common/breadcrumbs/_breadcrumbs.html', {
+                "arr": ['<a href="#">Главная</a>', 'О компании']
+                })
+            </div>
+
+            <h1 class="head__title title-2">
+                О компании
+            </h1>
+        </div>
+
+        <div class="padding-wrap pt-0">
+            <div class="about">
+                <div class="container-sm">
+                    <div class="main-grid">
+                        <div class="main-grid__content">
+                            <div class="about__text">
+                                <div class="about__text-row text-content text-sm">
+                                    <h3>Реквизиты</h3>
+                                    <p>
+                                        ООО "ПП-СПб"
+                                    </p>
+                                    <p>
+                                        Юр. адрес: 192289, город Санкт-Петербург, Малая Балканская улица, дом 59 корпус
+                                        1 литер б, помещение 15
+                                    </p>
+                                    <p>
+                                        ОГРН 1157847395584
+                                    </p>
+                                    <p>
+                                        ИНН 7816306490
+                                    </p>
+                                    <p>
+
+                                        КПП 781601001
+                                    </p>
+                                    <p>
+                                        Банк: "Филиал "Санкт-Петербургский" ОАО "Альфа-Банк" г. Санкт-Петербург"
+                                    </p>
+                                    <p>
+                                        БИК: 044030786
+                                    </p>
+                                    <p>
+                                        Счет: 40702810232250000841
+                                    </p>
+                                    <p>
+                                        Кор/счет: 30101810600000000786
+                                    </p>
+                                </div>
+                                <div class="about__text-row about__text-row--mob-container"></div>
+                                <div class="about__text-row text-content text-sm">
+                                    <h3>Какой опыт работы Вашей компании на рынке оборудования?</h3>
+                                    <p>
+                                        Наша компания ведет свою деятельность с 2015 года.
+                                    </p>
+                                </div>
+                                <div class="about__text-row text-content text-sm">
+                                    <h3>Есть ли у Вашей компании офис / демонстрационный зал / склад?</h3>
+                                    <p>
+                                        Наши офисы расположены в Санкт-Петербурге, Москве и Екатеринбурге:
+                                    </p>
+                                    <ul>
+                                        <li>
+                                            Санкт-Петербург — ул. Малая Балканская д.59, корп. 1Б;
+                                        </li>
+                                        <li>
+                                            Москва — г. Москва, Нижегородская ул., 33, офис 101, г. Люберцы, ул. 65 лет
+                                            Победы, д.1, корп. 6;
+                                        </li>
+                                        <li>
+                                            Екатеринбург — ул. Шейнкмана, д. 7, кабинет 107.
+                                        </li>
+                                    </ul>
+                                    <p>
+                                        Демонстрационные залы находятся в Санкт-Петербурге и Москве.
+                                    </p>
+
+                                    <q>
+                                        Если у Вас нет возможности посетить наш демозал и попробовать оборудование в действии лично, то Вы можете прислать нам материал, с которым планируете работать, и мы обработаем его для Вас, фиксируя весь процесс на видео. После обработки мы вышлем Вам готовое изделие.
+                                    </q>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main-grid__side">
+                            <div class="main-grid__sticky-box" data-da=".about__text-row--mob-container,767.98,0">
+                                <form action="/">
+                                    <div class="request-form">
+                                        <div class="request-form__title">
+                                            Оставьте заявку и мы свяжемся с вами в ближайшее время
+                                        </div>
+                                        <div class="request-form__items">
+                                            <div class="request-form__item">
+                                                <label for="" class="request-form__label">Ваше имя</label>
+                                                <input type="text" class="input" placeholder="Введите имя">
+                                            </div>
+                                            <div class="request-form__item required">
+                                                <label for="" class="request-form__label">Телефон</label>
+                                                <input type="text" class="input" placeholder="Введите имя" required>
+                                            </div>
+                                            <div class="request-form__item">
+                                                <button class="request-form__submit btn-default btn-default--gradient">
+                                                    Отправить
+                                                </button>
+                                            </div>
+                                        </div>                                              
+                                    </div>
+                                </form>
+
+                                <div class="contact-box">
+                                    <div class="contact-box__row">
+                                        <div class="contact-box__title">
+                                            Мы в мессенджерах
+                                        </div>
+                                        <ul class="contact-box__social">
+                                            <li>
+                                                <a href="#">
+                                                    <svg><use xlink:href="img/icons/sprites.svg#viber-color"></use></svg>
+                                                    Viber
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <svg><use xlink:href="img/icons/sprites.svg#whatsapp-color"></use></svg>
+                                                    WhatsApp
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <svg><use xlink:href="img/icons/sprites.svg#telegram-color"></use></svg>
+                                                    Telegram
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="contact-box__row">
+                                        <div class="contact-box__title">
+                                            Узнайте больше по телефону
+                                        </div>
+                                        <a href="#" class="contact-box__phone">
+                                            +7 (800) 500-57-83s
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="padding-wrap pb-0">
+            <div class="container-sm">
+                @@include('common/gallery/_gallery.html')
+            </div>
+        </div>
+
+        <div class="p-80"></div>
+    </main>
+
+    <!-- == FOOTER ================== -->
+    @@include('common/footer/_footer.html',{})
+    <!-- == // FOOTER ================== -->
+
+    @@include('_js-bottom.html',{})
+</body>
+
+</html>

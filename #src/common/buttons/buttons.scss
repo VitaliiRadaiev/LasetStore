@@ -1,0 +1,32 @@
+.btn-default {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 4rem;
+    min-width: 18.8rem;
+    border-radius: 200px;
+    outline: none;
+    border: none;
+    box-shadow: none;
+    font-weight: 600;
+    font-size: 1.4rem;
+    line-height: 1.2em;
+    letter-spacing: -0.005em;
+    padding: 0.8rem 2rem;
+    background-color: $secondColor;
+    color: #fff;
+    transition: all .3s ease;
+
+    &--gradient {
+        background-image: linear-gradient(90deg, #DA121A 18.19%, #0E78C0 100%);
+        background-position: center;
+        background-size: 150%;
+
+        @media (min-width: 992px) {
+            &:hover {
+                background-position: top 50% right 0%;
+            }
+        }
+    }
+}

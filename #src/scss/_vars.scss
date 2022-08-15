@@ -1,0 +1,54 @@
+
+
+//<ШРИФТЫ>===========================================================================================================
+$mainFontFamily:  'Manrope', sans-serif;
+$fontAwesome: "Font Awesome 5 Free";
+//</ШРИФТЫ>===========================================================================================================
+
+//<РАЗМЕРЫ КОНТЕЙНЕРА>===========================================================================================================
+$minwidth: 320px;
+$mw: 1170;
+$md1: 1267.98;
+$md2: 991.98;
+$md3: 767.98;
+$md4: 479.98;
+//</РАЗМЕРЫ КОНТЕЙНЕРА>===========================================================================================================
+
+$textColor: #000000;
+$textColorSecondary: #848484;
+$hover: #0F8F5A;
+$active: #037847;
+$mainColor: #F01C24;
+$secondColor: #0E3C60;
+$dangerColor:  #FF4444;
+$successColor:#00C367;
+$infoColor: #BC62EF;
+$lightColor: #fff;
+$warningColor: #FFC31C;
+$bg: #F3F1EF;
+$bgSecondary: #EBE8E4;
+$bgSecondaryHover: #cdcac7;
+$borderColor: #D2D2D2;
+$gradient: linear-gradient(90deg, #DA121A 18.19%, #0E78C0 100%);
+$gradientSecond: linear-gradient(137.88deg, #DA121A 21.03%, #0E78C0 91.19%);
+
+
+:root {
+    --bs-primary: #222222;
+    --bs-secondary: #037847;
+    --bs-success: #00C367;
+    --bs-info: #BC62EF;
+    --bs-warning: #FFC31C;
+    --bs-danger: #FF4444;
+    --bs-light: #fff;
+    --bs-dark: #000;
+
+    --bs-primary-rgb: 34, 34, 34;
+    --bs-secondary-rgb: 3, 120, 71;
+    --bs-success-rgb: 0, 195, 103;
+    --bs-info-rgb: 188, 98, 239;
+    --bs-warning-rgb: 255, 195, 28;
+    --bs-danger-rgb: 255, 68, 68;
+    --bs-light-rgb: 255, 255, 255;
+    --bs-dark-rgb: 0, 0, 0;
+}
