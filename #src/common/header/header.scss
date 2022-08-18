@@ -216,6 +216,7 @@
         font-size: 1.4rem;
         line-height: 1.57em;
         letter-spacing: -0.005em;
+        color: inherit;
     }
 
     &__menu-link--dark {
@@ -246,6 +247,7 @@
         text-align: center;
         letter-spacing: -0.005em;
         min-height: 4.8rem;
+        color: inherit;
 
         @media (max-width: $md3+px) {
             min-height: 40px;
@@ -413,6 +415,7 @@
         line-height: 1.57em;
         padding: 0.6rem 1.6rem;
         display: block;
+        color: inherit;
 
         @media (max-width: $md2+px) {
             padding: 0;
@@ -502,6 +505,7 @@
         font-size: 1.6rem;
         line-height: 1.5em;
         letter-spacing: -0.005em;
+        color: inherit;
     }
 
     &__contacts {
@@ -524,6 +528,7 @@
             font-size: 1.4rem;
             line-height: 1.35em;
             letter-spacing: -0.005em;
+            color: inherit;
         }
     }
 }

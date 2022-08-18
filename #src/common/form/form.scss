@@ -122,6 +122,7 @@
     display: flex;
     align-items: center;
     position: relative;
+    cursor: pointer;
 
     & input {
         position: absolute;
@@ -131,27 +132,40 @@
 
         &:checked ~ {
             & .checkbox-radio__square {
-                background-color: $active;
-                border-color: $active;
-                background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDEwIDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0wLjk5OTk5OSA0LjYzNTg4TDIuNDc0NzEgNi4xMTA1OUMyLjg2NTIzIDYuNTAxMTEgMy40OTg0IDYuNTAxMTEgMy44ODg5MiA2LjExMDU5TDkgMC45OTk1MTIiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMS4yIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+Cg==");
+                background-color: $mainColor;
+                border-color: $mainColor;
+                background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTQiIGhlaWdodD0iOSIgdmlld0JveD0iMCAwIDE0IDkiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0xIDNMNiA4TDEzIDEiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo=");
             }
         }
     }
 
     &__square {
         flex: 0 0 auto;
-        height: 1.2rem;
-        width: 1.2rem;
-        border: 1px solid $mainColor;
-        margin-right: 1rem;
+        height: 2.4rem;
+        width: 2.4rem;
+        border: 1px solid #e3e3e3;
+        margin-right: 1.6rem;
         background-position: center;
-        background-size: 85%;
+        background-size: 65%;
         background-repeat: no-repeat;
+        border-radius: 0.4rem;
     }
 
     &__text {
         font-weight: 400;
-        font-size: 14px;
-        line-height: 1.5em;
+        font-size: 1.4rem;
+        line-height: 1.29em;
+    }
+
+    &--with-border {
+        border: 1px solid #d9d9d9;
+        border-radius: 0.8rem;
+        padding: 1.6rem;
+
+        @media (max-width: $md3+px) {
+            & .checkbox-radio__square {
+                margin-right: 8px;
+            }
+        }
     }
 }

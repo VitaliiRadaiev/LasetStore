@@ -292,19 +292,21 @@ class App {
 
 			this.dynamicAdapt.init();
 			this.headerHandler();
+			this.slidersInit();
 			this.popupHandler();
 			this.initSmoothScroll();
 			this.inputMaskInit();
 			this.tabsInit();
 			this.selectInit();
 			this.spollerInit();
+			this.zoomInit();
 			//this.setFontSize();
 			this.componentsScriptsBeforeLoad();
 		});
 
 		window.addEventListener('load', () => {
 			this.setPaddingTopHeaderSize();
-			this.slidersInit();
+			
 			this.componentsScriptsAfter();
 		});
 
@@ -557,6 +559,33 @@ window.popup = {
             });
         })
     }
+};
+		let productPreviewSliderThumbs = document.querySelector('[data-slider="product-images-thumbs"]');
+let productPreviewSliderImages = document.querySelector('[data-slider="product-images-slider"]');
+if (productPreviewSliderThumbs && productPreviewSliderImages) {
+
+    let swiperProductPreviewSliderThumbs = new Swiper(productPreviewSliderThumbs.querySelector('.swiper'), {
+        spaceBetween: 15,
+        direction: 'vertical',
+        slidesPerView: 5,
+        slidesPerGroup: 2,
+        freeMode: true,
+        navigation: {
+            nextEl: productPreviewSliderThumbs.querySelector('[data-action="slider-next"]'),
+        },
+    });
+
+    let swiperProductPreviewSliderImages = new Swiper(productPreviewSliderImages.querySelector('.swiper'), {
+        spaceBetween: 20,
+        thumbs: {
+            swiper: swiperProductPreviewSliderThumbs
+        },
+        preloadImages: false,
+        pagination: {
+        	el: productPreviewSliderImages.querySelector('.swiper-pagination'),
+        	clickable: true,
+        },
+    });
 };
 	}
 
@@ -984,12 +1013,109 @@ window.popup = {
 		}
 	}
 
+	zoomInit() {
+		let zoomContainers = document.querySelectorAll('[data-zoom-container]');
+        if (zoomContainers.length) {
+            zoomContainers.forEach(container => {
+				let zoomImages = container.querySelectorAll('[data-zoom-img]');
+				if(zoomImages.length) {
+					zoomImages.forEach(img => {
+						new Drift(img, {
+							paneContainer: container.querySelector('[data-zoom-zone]'),
+							inlinePane: 900,
+							inlineOffsetY: -85,
+							containInline: true,
+							hoverBoundingBox: true,
+							zoomFactor: 2.5,
+							sourceAttribute: 'data-zoom-img',
+							touchDelay: this.utils.isMobile() ? 500 : 0,
+						});
+					})
+				}
+            })
+        }
+	}
+
 
 	componentsScriptsAfter() {
 		;
 	}
 
 	componentsScriptsBeforeLoad() {
+		{
+    let ratings = document.querySelectorAll('[data-rating]');
+    if(ratings.length) {
+        ratings.forEach(rating => {
+            let count = rating.dataset.rating > 5 ? 5
+                        : rating.dataset.rating ? rating.dataset.rating
+                        : 0;
+                        
+            let starsLine = rating.querySelector('.rating__stars-1');
+
+            starsLine.style.width = `calc(${count / 5 * 100}% - ${0.4}rem)`;
+        })
+    }
+};
+		;
+		{
+    let quiz = document.querySelector('[data-quiz]');
+    if(quiz) {
+        let progressValue = quiz.querySelector('.quiz__progress-value span');
+        let sliderData = new Swiper(quiz.querySelector('.swiper'), {
+            effect: 'fade',
+            observer: true,
+            observeParents: true,
+            slidesPerView: 1,
+            spaceBetween: 0,
+            speed: 600,
+            touchRatio: 0,
+            autoHeight: true,
+            pagination: {
+            	el: quiz.querySelector('.swiper-pagination'),
+            	type: "progressbar",
+            },
+            navigation: {
+                nextEl: quiz.querySelector('.quiz__btn-next'),
+                prevEl: quiz.querySelector('.quiz__btn-prev'),
+            },
+            on: {
+                slideChange: (swiperData) => {
+                    if(progressValue) {
+                        progressValue.innerHTML = (Math.round(swiperData.progress * 100)) + '%';
+                    }
+
+                    let progress = quiz.querySelector('.swiper-pagination-progressbar-fill');
+                    if(progress) {
+                        progress.style.width = (Math.round(swiperData.progress * 100)) + '%';
+                    }
+                }
+            }
+        });
+    }
+} ;
+		let description = document.querySelector('[data-description]');
+if(description) {
+    let collapseBox = description.querySelector('.description__collapse-box');
+    let btn = description.querySelector('.description__btn-more');
+
+
+    if(btn && collapseBox) {
+        let btnStartText = btn.innerHTML;
+
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.utils.slideToggle(collapseBox, 300);
+            description.classList.toggle('description--text-show');
+
+            if(description.classList.contains('description--text-show')) {
+                btn.innerHTML = 'Скрыть';
+            } else {
+                btn.innerHTML = btnStartText;
+            }
+        })
+    }
+};
+
 		document.querySelectorAll(".accordion__link").forEach((e=>{e&&e.addEventListener("click",(function(){this.classList.toggle("active");let e=this.nextElementSibling;e.style.maxHeight?e.style.maxHeight=null:e.style.maxHeight=e.scrollHeight+"px"}))})),document.querySelectorAll(".accordion__item-title").forEach((e=>{e&&e.addEventListener("click",(function(){this.classList.toggle("active");let e=this.nextElementSibling;e.style.maxHeight?e.style.maxHeight=null:e.style.maxHeight=e.scrollHeight+"px"}))}))
 	}
 

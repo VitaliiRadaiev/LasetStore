@@ -17,6 +17,7 @@
 // ==== PLUGINS ===========================================================================================
 @import "plugins/swiper-bundle";
 @import "plugins/fancybox";
+@import "plugins/zoom.scss";
 // ==== // PLUGINS ===========================================================================================
 
 // ==== VARS ===========================================================================================
@@ -38,10 +39,19 @@
 @import "../common/breadcrumbs/breadcrumbs";
 @import "../common/form/form";
 @import "../common/gallery/gallery";
+@import "../common/rating/rating";
+@import "../common/product-images/product-images";
+@import "../common/product-action-card/product-action-card";
+@import "../common/accordion/accordion";
+@import "../common/audio/audio";
+@import "../common/quiz/quiz";
+@import "../common/description/description";
+@import "../common/materials-list/materials-list";
 // ==== // COMMON BLOCKS =====================================================
 
 // ==== PAGES =====================================================
 @import "pages/home";
 @import "pages/about";
+@import "pages/product-detail";
 // ==== AND PAGES =====================================================
 

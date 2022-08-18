@@ -21,19 +21,21 @@ class App {
 
 			this.dynamicAdapt.init();
 			this.headerHandler();
+			this.slidersInit();
 			this.popupHandler();
 			this.initSmoothScroll();
 			this.inputMaskInit();
 			this.tabsInit();
 			this.selectInit();
 			this.spollerInit();
+			this.zoomInit();
 			//this.setFontSize();
 			this.componentsScriptsBeforeLoad();
 		});
 
 		window.addEventListener('load', () => {
 			this.setPaddingTopHeaderSize();
-			this.slidersInit();
+			
 			this.componentsScriptsAfter();
 		});
 
@@ -50,6 +52,7 @@ class App {
 	slidersInit() {
 		@@include('../common/carousel/carousel.js');
 		@@include('../common/gallery/gallery.js');
+		@@include('../common/product-images/product-images.js');
 	}
 
 
@@ -246,12 +249,40 @@ class App {
 		}
 	}
 
+	zoomInit() {
+		let zoomContainers = document.querySelectorAll('[data-zoom-container]');
+        if (zoomContainers.length) {
+            zoomContainers.forEach(container => {
+				let zoomImages = container.querySelectorAll('[data-zoom-img]');
+				if(zoomImages.length) {
+					zoomImages.forEach(img => {
+						new Drift(img, {
+							paneContainer: container.querySelector('[data-zoom-zone]'),
+							inlinePane: 900,
+							inlineOffsetY: -85,
+							containInline: true,
+							hoverBoundingBox: true,
+							zoomFactor: 2.5,
+							sourceAttribute: 'data-zoom-img',
+							touchDelay: this.utils.isMobile() ? 500 : 0,
+						});
+					})
+				}
+            })
+        }
+	}
+
 
 	componentsScriptsAfter() {
 		@@include('../common/promo-header/promo-header.js');
 	}
 
 	componentsScriptsBeforeLoad() {
+		@@include('../common/rating/rating.js');
+		@@include('../common/product-action-card/product-action-card.js');
+		@@include('../common/quiz/quiz.js');
+		@@include('../common/description/description.js');
+
 		document.querySelectorAll(".accordion__link").forEach((e=>{e&&e.addEventListener("click",(function(){this.classList.toggle("active");let e=this.nextElementSibling;e.style.maxHeight?e.style.maxHeight=null:e.style.maxHeight=e.scrollHeight+"px"}))})),document.querySelectorAll(".accordion__item-title").forEach((e=>{e&&e.addEventListener("click",(function(){this.classList.toggle("active");let e=this.nextElementSibling;e.style.maxHeight?e.style.maxHeight=null:e.style.maxHeight=e.scrollHeight+"px"}))}))
 	}
 

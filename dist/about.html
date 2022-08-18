@@ -448,9 +448,9 @@ defer
                                                 <label for="" class="request-form__label">Ваше имя</label>
                                                 <input type="text" class="input" placeholder="Введите имя">
                                             </div>
-                                            <div class="request-form__item required">
+                                            <div class="request-form__item required" data-mask="+7(999) 999 99 99">
                                                 <label for="" class="request-form__label">Телефон</label>
-                                                <input type="text" class="input" placeholder="Введите имя" required>
+                                                <input type="text" class="input" placeholder="Введите номер" required>
                                             </div>
                                             <div class="request-form__item">
                                                 <button class="request-form__submit btn-default btn-default--gradient">
@@ -506,19 +506,19 @@ defer
         <div class="padding-wrap pb-0">
             <div class="container-sm">
                 <section class="gallery" data-tabs>
-    <h3 class="gallery__title title-3">
+    <h2 class="gallery__title title-2">
         Фотографии офисов:
-    </h3>
-    <div class="gallery__nav-wrap">
-        <div class="gallery__nav-inner">
-            <div class="gallery__nav">
-                <div class="gallery__nav-item" data-tab-trigger="0">
+    </h2>
+    <div class="gallery__nav-wrap tabs-nav">
+        <div class="tabs-nav__inner">
+            <div class="tabs-nav__list">
+                <div class="tabs-nav__list-item" data-tab-trigger="0">
                     Санкт-Петербург
                 </div>
-                <div class="gallery__nav-item" data-tab-trigger="1">
+                <div class="tabs-nav__list-item" data-tab-trigger="1">
                     Люберцы
                 </div>
-                <div class="gallery__nav-item" data-tab-trigger="2">
+                <div class="tabs-nav__list-item" data-tab-trigger="2">
                     Екатеринбург
                 </div>
             </div>

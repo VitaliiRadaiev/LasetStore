@@ -1,0 +1,123 @@
+.product-action-card {
+    @media (min-width: 768px) {
+        border: 1px solid #e3e3e3;
+        border-radius: 1.6rem;
+    }
+
+    &__top {
+        padding: 3.2rem 2.4rem 1.6rem;
+
+        @media (max-width: $md3+px) {
+            padding: 0;
+            margin-bottom: 24px;
+        }
+    }
+
+    &__prices {
+        margin-bottom: 2.4rem;
+
+        @media (max-width: $md3+px) {
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px 14px;
+        }
+    }
+
+    &__price {
+        font-weight: 800;
+        font-size: 2.8rem;
+        line-height: 1.21em;
+        letter-spacing: -0.005em;
+        margin-bottom: 0.4rem;
+
+        @media (max-width: $md3+px) {
+            font-weight: 700;
+            font-size: 22px;
+            line-height: 1em;
+            margin-bottom: 0;
+            letter-spacing: 0;
+        }
+    }
+
+    &__old-price {
+        font-weight: 400;
+        font-size: 2.2rem;
+        line-height: 1em;
+        color: $textColorSecondary;
+        text-decoration: line-through;
+    }
+
+    &__quantity {
+        margin-bottom: 1.6rem;
+
+        @media (max-width: $md3+px) {
+            margin-bottom: 8px;
+        }
+    }
+
+    &__btn {
+        width: 100%;
+
+        &:not(:last-child) {
+            margin-bottom: 1.6rem;
+
+            @media (max-width: $md3+px) {
+                margin-bottom: 8px;
+            }
+        }
+    }
+
+    &__info {
+        display: none;
+        margin-bottom: 1.6rem;
+        @media (max-width: $md2+px) {
+            &.product__preview-info {
+                display: block;
+            }
+        }
+
+        & .product__preview-info-list {
+            margin-bottom: 0.8rem;
+
+            & > li {
+                &:not(:last-child) {
+                    margin-bottom: 0.4rem;
+                }
+            }
+        }
+    }
+
+    &__accordion {
+    }
+
+    &__bottom {
+        @media (max-width: $md3+px) {
+            padding-top: 24px;
+
+        }
+        & .contact-box {
+            border: none;
+            padding: 1.6rem 1.6rem 3.2rem;
+
+            @media (max-width: $md3+px) {
+                padding: 24px 16px 0;
+            }
+
+            & > *:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        & .contact-box__row {
+            &:not(:last-child) {
+                margin-bottom: 1.6rem;
+            }
+        }
+
+        & .contact-box__title {
+            margin-bottom: 0.8rem;
+        }
+    }
+}

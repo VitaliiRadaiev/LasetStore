@@ -1,0 +1,1861 @@
+<!DOCTYPE html>
+<html lang="ru" data-set-font-size>
+<head>
+	<meta charset="UTF-8">
+	<title>Laser Store</title>
+	<meta name="format-detection" content="telephone=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/app.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<style>
+		body.page-is-load ._preload-body {
+			opacity: 0;
+			visibility: hidden;
+		}
+
+		body.page-is-load ._preload-body:before {
+			display: none;
+		}
+
+		.mouse-dot {
+			font-size: 10px;
+			height: 2em;
+			width: 2em;
+			transition: transform, background-color, height, width .3s ease;
+			position: absolute;
+			z-index: 99999;
+			border-radius: 50%;
+			background-color: #222222;
+			transform: translate(-50%, -50%) scale(1);
+			pointer-events: none;
+			left: -30px;
+			top: -30px;
+			box-shadow: 0 0 15px rgba(243, 241, 239, 0.4);
+		}
+
+		.mouse-dot.hide {
+			transform: translate(-50%, -50%) scale(0);
+		}
+
+		.mouse-dot.hover {}
+
+		._preload-body {
+			background-color: #fff;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 999;
+			transition: all .6s ease .2s;
+		}
+
+		._preload-body:before {
+			position: absolute;
+			content: '';
+			z-index: 999;
+			top: 50%;
+			left: 50%;
+			height: 50px;
+			width: 50px;
+			border-radius: 50%;
+			border: 4px solid #6e6e6e;
+			border-right: 4px solid #fff;
+			transform: translate(-50%, -50%);
+			animation: preloadBody 2s linear infinite;
+		}
+
+		@keyframes preloadBody {
+			from {
+				transform: translate(-50%, -50%) rotate(0);
+			}
+
+			to {
+				transform: translate(-50%, -50%) rotate(360deg);
+			}
+		}
+	</style>
+	
+<!-- <script src="js/scripts.js"></script> -->
+<script src="js/vendors.js"></script>
+<script src="js/app.js"></script>
+<!-- <script
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7Q82l2QjSzJJk1uUW3OzUBGPTlbk8w1g&callback=initMap&libraries=&v=weekly"
+defer
+></script> -->
+</head>
+
+<body>
+    <!-- == TOP LINE ================== -->
+
+    <header class="header sticky" data-header data-popup="add-right-padding">
+    <div class="header__row-1">
+        <div class="container-sm">
+            <div class="header__body-1">
+                <div class="header__logo">
+                    <a href="#">
+                        <picture>
+                            <source srcset="img/logo/logo.svg" media="(min-width: 768px)" >
+                            <img  src="img/logo/logo-mob.svg" alt="img">
+                        </picture>                                      
+                    </a>
+                </div>
+                <ul class="header__contacts">
+                    <li>
+                        <label>Горячая линия</label>
+                        <a href="#">+7 (800) 500-57-83</a>
+                    </li>
+                    <li>
+                        <label>Санкт-Петербург</label>
+                        <a href="#">+7 (812) 332-52-86</a>
+                    </li>
+                    <li>
+                        <label>Москва</label>
+                        <a href="#">+7 (495) 540-57-83</a>
+                    </li>
+                    <li>
+                        <label>E-mail</label>
+                        <a href="#">help@laserstore.ru</a>
+                    </li>
+                </ul>
+                <div class="header__search">
+                    <form action="/">
+                        <div class="search-header">
+                            <input type="text" class="search-header__input" placeholder="Поиск">
+                            <button class="search-header__submit">
+                                <svg>
+                                    <use xlink:href="img/icons/sprites.svg#search"></use>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="header__actions">
+                    <a href="#" class="header__actions-item">
+                        <div class="header__actions-count">3</div>
+                        <svg>
+                            <use xlink:href="img/icons/sprites.svg#heart"></use>
+                        </svg>
+                    </a>
+                    <a href="#" class="header__actions-item">
+                        <svg>
+                            <use xlink:href="img/icons/sprites.svg#user"></use>
+                        </svg>
+                    </a>
+                    <a href="#" class="header__actions-item">
+                        <div class="header__actions-count">1</div>
+                        <svg>
+                            <use xlink:href="img/icons/sprites.svg#basket"></use>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header__row-2">
+        <div class="container-sm">
+            <div class="header__body-2">
+                <div class="header__burger" data-action="toggle-mobile-menu">
+                    <div class="burger">
+                        <span>
+                            <svg width="24" height="2" viewBox="0 0 24 2" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 1H23" stroke="white" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                        <span>
+                            <svg width="24" height="2" viewBox="0 0 24 2" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 1H23" stroke="white" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                        <span>
+                            <svg width="24" height="2" viewBox="0 0 24 2" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 1H23" stroke="white" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                        <span>
+                            <svg width="24" height="2" viewBox="0 0 24 2" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 1H23" stroke="white" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+                <ul class="header__menu">
+                    <li class="menu-item-has-children">
+                        <a href="#" class="header__menu-link header__menu-link--dark">
+                            <div class="burger">
+                                <span>
+                                    <svg width="24" height="2" viewBox="0 0 24 2" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 1H23" stroke="white" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </span>
+                                <span>
+                                    <svg width="24" height="2" viewBox="0 0 24 2" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 1H23" stroke="white" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </span>
+                                <span>
+                                    <svg width="24" height="2" viewBox="0 0 24 2" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 1H23" stroke="white" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </span>
+                                <span>
+                                    <svg width="24" height="2" viewBox="0 0 24 2" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 1H23" stroke="white" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+                                </span>
+                            </div>
+
+                            Оборудование
+                        </a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="#" class="sub-menu__link">Лазерные станки, граверы, CO2</a>
+                            </li>
+                            <li>
+                                <a href="#" class="sub-menu__link">Лазерные маркеры, маркираторы, маркировщики</a>
+                            </li>
+                            <li>
+                                <a href="#" class="sub-menu__link">Лазерные станки по металлу</a>
+                            </li>
+                            <li>
+                                <a href="#" class="sub-menu__link">Лазерная сварка и пайка</a>
+                            </li>
+                            <li>
+                                <a href="#" class="sub-menu__link">Лазерный очиститель</a>
+                            </li>
+                            <li>
+                                <a href="#" class="sub-menu__link">Станки для резки труб</a>
+                            </li>
+                            <li>
+                                <a href="#" class="sub-menu__link">Фрезерные станки</a>
+                            </li>
+                            <li>
+                                <a href="#" class="sub-menu__link">Комплектующие</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="header__menu-link">Статьи</a>
+                    </li>
+                    <li>
+                        <a href="#" class="header__menu-link">Контакты</a>
+                    </li>
+                    <li>
+                        <a href="#" class="header__menu-link">Все отзывы</a>
+                    </li>
+                    <li>
+                        <a href="#" class="header__menu-link">FAQ</a>
+                    </li>
+                    <li>
+                        <a href="#" class="header__menu-link">О компании</a>
+                    </li>
+                    <li>
+                        <a href="#" class="header__menu-link">Вакансии</a>
+                    </li>
+                </ul>
+                <a href="#" class="header__btn">Заказать обратный звонок</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="mobile-mune" data-mobile-menu>
+    <div class="mobile-mune__scroll-wrap">
+        <ul class="mobile-mune__menu">
+            <li class="menu-item-has-children">
+                <a href="#" class="mobile-mune__menu-link">Оборудование</a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="#" class="sub-menu__link">Лазерные станки, граверы, CO2</a>
+                    </li>
+                    <li>
+                        <a href="#" class="sub-menu__link">Лазерные маркеры, маркираторы, маркировщики</a>
+                    </li>
+                    <li>
+                        <a href="#" class="sub-menu__link">Лазерные станки по металлу</a>
+                    </li>
+                    <li>
+                        <a href="#" class="sub-menu__link">Лазерная сварка и пайка</a>
+                    </li>
+                    <li>
+                        <a href="#" class="sub-menu__link">Лазерный очиститель</a>
+                    </li>
+                    <li>
+                        <a href="#" class="sub-menu__link">Станки для резки труб</a>
+                    </li>
+                    <li>
+                        <a href="#" class="sub-menu__link">Фрезерные станки</a>
+                    </li>
+                    <li>
+                        <a href="#" class="sub-menu__link">Комплектующие</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="mobile-mune__menu-link">Статьи</a>
+            </li>
+            <li>
+                <a href="#" class="mobile-mune__menu-link">Контакты</a>
+            </li>
+            <li>
+                <a href="#" class="mobile-mune__menu-link">Все отзывы</a>
+            </li>
+            <li>
+                <a href="#" class="mobile-mune__menu-link">FAQ</a>
+            </li>
+            <li>
+                <a href="#" class="mobile-mune__menu-link">О компании</a>
+            </li>
+            <li>
+                <a href="#" class="mobile-mune__menu-link">Вакансии</a>
+            </li>
+        </ul>
+        <ul class="mobile-mune__contacts">
+            <li>
+                <label>Горячая линия</label>
+                <a href="#">+7 (800) 500-57-83</a>
+            </li>
+            <li>
+                <label>Санкт-Петербург</label>
+                <a href="#">+7 (812) 332-52-86</a>
+            </li>
+            <li>
+                <label>Москва</label>
+                <a href="#">+7 (495) 540-57-83</a>
+            </li>
+        </ul>
+    </div>
+</div>
+    <!-- == // TOP LINE ================== -->
+
+    <main class="_page product-detail-page" data-padding-top-header-size>
+        <div class="product-detail-head head container-sm">
+            <div class="head__nav">
+                <ul class="breadcrumbs">
+     <li><a href="#">Главная</a></li>
+         <li><a href="#">Лазерные маркеры, маркираторы и маркировщики (CO2)</a></li>
+         <li>Лазерный маркер TOR LT с подъемным столом</li>
+        
+</ul>
+            </div>
+
+            <h1 class="head__title title-2">
+                Лазерный маркер TOR LT с подъемным столом
+            </h1>
+        </div>
+
+        <div class="padding-wrap pt-0">
+            <div class="container-sm">
+                <div class="product">
+                    <div class="product__preview">
+                        <div class="product__preview-col-1">
+                            <div class="product__preview-top">
+                                <div class="product__preview-top-item product__preview-top-item--1">
+                                    <div class="product__preview-cod">
+                                        КОД: <strong>61787</strong>
+                                    </div>
+                                </div>
+                                <div class="product__preview-top-item product__preview-top-item--2">
+                                    <div class="product__preview-top-group">
+                                        <div class="rating" data-rating="5">
+    <div class="rating__stars rating__stars-1">
+        <div class="rating__star">
+            <span class="icon-star-full"></span>
+        </div>
+        <div class="rating__star">
+            <span class="icon-star-full"></span>
+        </div>
+        <div class="rating__star">
+            <span class="icon-star-full"></span>
+        </div>
+        <div class="rating__star">
+            <span class="icon-star-full"></span>
+        </div>
+        <div class="rating__star">
+            <span class="icon-star-full"></span>
+        </div>
+    </div>
+    <div class="rating__stars rating__stars-2">
+        <div class="rating__star">
+            <span class="icon-star-full"></span>
+        </div>
+        <div class="rating__star">
+            <span class="icon-star-full"></span>
+        </div>
+        <div class="rating__star">
+            <span class="icon-star-full"></span>
+        </div>
+        <div class="rating__star">
+            <span class="icon-star-full"></span>
+        </div>
+        <div class="rating__star">
+            <span class="icon-star-full"></span>
+        </div>
+    </div>
+</div>
+                                        <a href="#" class="product__preview-top-reviews">(2 отзыва)</a>
+                                    </div>
+                                </div>
+                                <div class="product__preview-top-item product__preview-top-item--3">
+                                    <div class="product__preview-top-status status status--available">
+                                        <!-- status--not-available  status--ends -->
+                                        В наличии
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product__preview-inner">
+                                <div class="product__preview-images">
+                                    <div class="product-images">
+    <div class="product-images__thumbs" data-slider="product-images-thumbs">
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="img/photo/product-images-thumb-1.png" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/photo/product-images-thumb-1.png" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/photo/product-images-thumb-1.png" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/photo/product-images-thumb-1.png" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/photo/product-images-thumb-1.png" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/photo/product-images-thumb-1.png" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/photo/product-images-thumb-1.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="product-images__thumbs-btn" data-action="slider-next">
+            <svg><use xlink:href="img/icons/sprites.svg#chevron-down"></use></svg>
+        </div>
+    </div>
+    <div class="product-images__slider" data-slider="product-images-slider">
+        <div class="swiper" data-zoom-container>
+            <div data-zoom-zone></div>
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="img/photo/product-image-1.png" data-zoom-img="img/photo/product-image-1.png" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/photo/product-image-1.png" data-zoom-img="img/photo/product-image-1.png" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/photo/product-image-1.png" data-zoom-img="img/photo/product-image-1.png" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/photo/product-image-1.png" data-zoom-img="img/photo/product-image-1.png" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/photo/product-image-1.png" data-zoom-img="img/photo/product-image-1.png" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/photo/product-image-1.png" data-zoom-img="img/photo/product-image-1.png" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/photo/product-image-1.png" data-zoom-img="img/photo/product-image-1.png" alt="">
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</div>
+                                </div>
+                                <div class="product__preview-info">
+                                    <div class="product__preview-info-title">
+                                        О товаре:
+                                    </div>
+                                    <ul class="product__preview-info-list">
+                                        <li>
+                                            <label>
+                                                Тип излучателя (источника):
+                                            </label>
+                                            <p>Волоконный</p>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                Мощность лазера, Вт:
+                                            </label>
+                                            <p>
+                                                20, 30, 50
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                Рабочее поле, мм:
+                                            </label>
+                                            <p>
+                                                до 100х100
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                Лазерный излучатель на выбор:
+                                            </label>
+                                            <p>
+                                                MAX / Raycus / JPT / IPG
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                Длительность импульсов:
+                                            </label>
+                                            <p>
+                                                120 нс
+                                            </p>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                Длина волны лазерного излучения:
+                                            </label>
+                                            <p>
+                                                1,064 мкм
+                                            </p>
+                                        </li>
+                                    </ul>
+                                    <a href="#" class="product__preview-info-more">Все характеристики</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product__preview-col-2">
+                            <div class="product__preview-actions" data-da=".product__preview-col-1,767.98,last">
+                                <button class="product__preview-actions-item heart ">
+                                    <!-- active -->
+                                    <div class="product__preview-actions-item-icon heart__icon">
+                                        <div class="heart__empty">
+                                            <svg>
+                                                <use xlink:href="img/icons/sprites.svg#heart-empty"></use>
+                                            </svg>
+                                        </div>
+                                        <div class="heart__full">
+                                            <svg>
+                                                <use xlink:href="img/icons/sprites.svg#heart-full"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    Добавить в избранное
+                                </button>
+                                <button class="product__preview-actions-item">
+                                    <div class="product__preview-actions-item-icon">
+                                        <svg>
+                                            <use xlink:href="img/icons/sprites.svg#list"></use>
+                                        </svg>
+                                    </div>
+                                    В список сравнения
+                                </button>
+                            </div>
+                            <div class="product__action-card">
+                                <div class="product-action-card">
+    <div class="product-action-card__top">
+        <div class="product-action-card__prices">
+            <div class="product-action-card__price">
+                335 000₽
+            </div>
+            <div class="product-action-card__old-price">
+                395 000₽
+            </div>
+        </div>
+        <div class="product-action-card__info product__preview-info">
+            <ul class="product__preview-info-list">
+                <li>
+                    <label>
+                        Тип излучателя (источника):
+                    </label>
+                    <p>Волоконный</p>
+                </li>
+                <li>
+                    <label>
+                        Мощность лазера, Вт:
+                    </label>
+                    <p>
+                        20, 30, 50
+                    </p>
+                </li>
+            </ul>
+            <a href="#" class="product__preview-info-more">Все характеристики</a>
+        </div>
+        <div class="product-action-card__quantity d-none"></div>
+        <button class="product-action-card__btn btn-default btn-default--lg btn-default--gradient">В корзину</button>
+        <button class="product-action-card__btn btn-default btn-default--lg">Купить в кредит</button>
+    </div>
+    <div class="product-action-card__accordion">
+        <ul class="accordion" data-spoller="one">
+            <li>
+                <div class="accordion__title" data-spoller-trigger>
+                    Сервисный центр
+                    <div class="accordion__title-icon">
+                        <svg><use xlink:href="img/icons/sprites.svg#chevron-down"></use></svg>
+                    </div>
+                </div>
+                <div class="accordion__text text-content text-sm">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, neque.
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="accordion__title" data-spoller-trigger>
+                    Сервисный центр
+                    <div class="accordion__title-icon">
+                        <svg><use xlink:href="img/icons/sprites.svg#chevron-down"></use></svg>
+                    </div>
+                </div>
+                <div class="accordion__text text-content text-sm">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, neque.
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="accordion__title" data-spoller-trigger>
+                    Кредит/лизинг
+                    <div class="accordion__title-icon">
+                        <svg><use xlink:href="img/icons/sprites.svg#chevron-down"></use></svg>
+                    </div>
+                </div>
+                <div class="accordion__text text-content text-sm">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, neque.
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="accordion__title" data-spoller-trigger>
+                    Наши преимущества
+                    <div class="accordion__title-icon">
+                        <svg><use xlink:href="img/icons/sprites.svg#chevron-down"></use></svg>
+                    </div>
+                </div>
+                <div class="accordion__text text-content text-sm">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, neque.
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="accordion__title" data-spoller-trigger>
+                    Доставка
+                    <div class="accordion__title-icon">
+                        <svg><use xlink:href="img/icons/sprites.svg#chevron-down"></use></svg>
+                    </div>
+                </div>
+                <div class="accordion__text text-content text-sm">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, neque.
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="accordion__title" data-spoller-trigger>
+                    Возврат платежа
+                    <div class="accordion__title-icon">
+                        <svg><use xlink:href="img/icons/sprites.svg#chevron-down"></use></svg>
+                    </div>
+                </div>
+                <div class="accordion__text text-content text-sm">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, neque.
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="product-action-card__bottom">
+        <div class="contact-box">
+            <div class="contact-box__row">
+                <ul class="contact-box__social">
+                    <li>
+                        <a href="#">
+                            <svg><use xlink:href="img/icons/sprites.svg#viber-color"></use></svg>
+                            Viber
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <svg><use xlink:href="img/icons/sprites.svg#whatsapp-color"></use></svg>
+                            WhatsApp
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <svg><use xlink:href="img/icons/sprites.svg#telegram-color"></use></svg>
+                            Telegram
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="contact-box__row">
+                <div class="contact-box__title">
+                    Узнайте больше по телефону
+                </div>
+                <a href="#" class="contact-box__phone">
+                    +7 (800) 500-57-83s
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+                            </div>
+                            <div class="product__buttons" data-da=".product-action-card__bottom,767.98,first">
+                                <a href="#" class="btn-default btn-default--border-gradient">
+                                    Сохранить
+                                    <svg>
+                                        <use xlink:href="img/icons/sprites.svg#download"></use>
+                                    </svg>
+                                </a>
+                                <a href="#" class="btn-default btn-default--border-gradient">
+                                    Распечатать
+                                    <svg>
+                                        <use xlink:href="img/icons/sprites.svg#print"></use>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product__about" data-tabs>
+                        <div class="product__about-tabs tabs-nav">
+                            <div class="tabs-nav__inner">
+                                <div class="tabs-nav__list">
+                                    <div class="tabs-nav__list-item tab-active" data-tab-trigger="0">
+                                        Видео
+                                    </div>
+                                    <div class="tabs-nav__list-item " data-tab-trigger="1">
+                                        Отзывы
+                                    </div>
+                                    <div class="tabs-nav__list-item " data-tab-trigger="2">
+                                        Описание
+                                    </div>
+                                    <div class="tabs-nav__list-item " data-tab-trigger="3">
+                                        Характеристики
+                                    </div>
+                                    <div class="tabs-nav__list-item " data-tab-trigger="4">
+                                        Файлы
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product__about-content" data-tab-content="0">
+                            <section class="gallery gallery--videos">
+                                <h2 class="gallery__title title-2">
+                                    Видео
+                                </h2>
+                                <div class="gallery__body">
+                                    <div class="gallery__slider swiper" data-slider="gallery-slider">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide">
+                                                <a href="https://youtu.be/umfAyi8fEY8" class="gallery__img ibg" data-fancybox>
+                                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/umfAyi8fEY8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                </a>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <a href="https://youtu.be/umfAyi8fEY8" class="gallery__img ibg" data-fancybox>
+                                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/umfAyi8fEY8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                </a>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <a href="https://youtu.be/umfAyi8fEY8" class="gallery__img ibg" data-fancybox>
+                                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/umfAyi8fEY8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                </a>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <a href="https://youtu.be/umfAyi8fEY8" class="gallery__img ibg" data-fancybox>
+                                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/umfAyi8fEY8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                </a>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <a href="https://youtu.be/umfAyi8fEY8" class="gallery__img ibg" data-fancybox>
+                                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/umfAyi8fEY8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                </a>
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <a href="https://youtu.be/umfAyi8fEY8" class="gallery__img ibg" data-fancybox>
+                                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/umfAyi8fEY8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="product__about-content" data-tab-content="1">
+                            <div class="product__about-content-row">
+                                <div class="audio-testimonials">
+                                    <h2 class="audio-testimonials__title title-2 text-center title-space">
+                                        Аудио отзывы
+                                    </h2>
+                                    <ul class="audio-testimonials__list">
+                                        <li>
+                                            <div class="audio-testimonial">
+                                                <div class="audio-testimonial__top">
+                                                    <div class="audio-testimonial__author">
+                                                        Алексей
+                                                    </div>
+                                                    <div class="audio-testimonial__time">
+                                                        23/01/2022, 14:58
+                                                    </div>
+                                                </div>
+
+                                                <div class="audio-testimonial__audio">
+                                                    <div class="audio">
+                                                        <!--  Music from http://www.noiseaddicts.com/free-samples-mp3/?id=4247 -->
+                                                        <audio controls
+                                                            src="//anavicente.me/resources/bensound-jazz.ogg"></audio>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="audio-testimonial">
+                                                <div class="audio-testimonial__top">
+                                                    <div class="audio-testimonial__author">
+                                                        Дмитрий
+                                                    </div>
+                                                    <div class="audio-testimonial__time">
+                                                        12/03/2021, 00:28
+                                                    </div>
+                                                </div>
+
+                                                <div class="audio-testimonial__audio">
+                                                    <div class="audio">
+                                                        <!--  Music from http://www.noiseaddicts.com/free-samples-mp3/?id=4247 -->
+                                                        <audio controls
+                                                            src="//anavicente.me/resources/bensound-jazz.ogg"></audio>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="product__about-content-row">
+                                <div class="testimonials">
+                                    <h2 class="testimonials__title title-2 text-center title-space">
+                                        Отзывы
+                                    </h2>
+                                    <ul class="testimonials__list">
+                                        <li>
+                                            <div class="testimonial">
+                                                <div class="testimonial__info">
+                                                    <div class="testimonial__author">Нораер</div>
+                                                    <div class="testimonial__rating">
+                                                        <div class="rating" data-rating="4.5">
+    <div class="rating__stars rating__stars-1">
+        <div class="rating__star">
+            <span class="icon-star-full"></span>
+        </div>
+        <div class="rating__star">
+            <span class="icon-star-full"></span>
+        </div>
+        <div class="rating__star">
+            <span class="icon-star-full"></span>
+        </div>
+        <div class="rating__star">
+            <span class="icon-star-full"></span>
+        </div>
+        <div class="rating__star">
+            <span class="icon-star-full"></span>
+        </div>
+    </div>
+    <div class="rating__stars rating__stars-2">
+        <div class="rating__star">
+            <span class="icon-star-full"></span>
+        </div>
+        <div class="rating__star">
+            <span class="icon-star-full"></span>
+        </div>
+        <div class="rating__star">
+            <span class="icon-star-full"></span>
+        </div>
+        <div class="rating__star">
+            <span class="icon-star-full"></span>
+        </div>
+        <div class="rating__star">
+            <span class="icon-star-full"></span>
+        </div>
+    </div>
+</div>
+                                                    </div>
+                                                    <div class="testimonial__time">
+                                                        12/03/2020, 00:28
+                                                    </div>
+                                                </div>
+                                                <div class="testimonial__text text-content text-md">
+                                                    Искали станок для маркировки ювелирных изделий, колец, подвесок.
+                                                    Были на демонстрации, подобрали модель TOR LT с полем 100*100.
+                                                    Ребятам спасибо!
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="testimonial">
+                                                <div class="testimonial__info">
+                                                    <div class="testimonial__author">Надежда</div>
+                                                    <div class="testimonial__rating">
+                                                        <div class="rating" data-rating="3.6">
+    <div class="rating__stars rating__stars-1">
+        <div class="rating__star">
+            <span class="icon-star-full"></span>
+        </div>
+        <div class="rating__star">
+            <span class="icon-star-full"></span>
+        </div>
+        <div class="rating__star">
+            <span class="icon-star-full"></span>
+        </div>
+        <div class="rating__star">
+            <span class="icon-star-full"></span>
+        </div>
+        <div class="rating__star">
+            <span class="icon-star-full"></span>
+        </div>
+    </div>
+    <div class="rating__stars rating__stars-2">
+        <div class="rating__star">
+            <span class="icon-star-full"></span>
+        </div>
+        <div class="rating__star">
+            <span class="icon-star-full"></span>
+        </div>
+        <div class="rating__star">
+            <span class="icon-star-full"></span>
+        </div>
+        <div class="rating__star">
+            <span class="icon-star-full"></span>
+        </div>
+        <div class="rating__star">
+            <span class="icon-star-full"></span>
+        </div>
+    </div>
+</div>
+                                                    </div>
+                                                    <div class="testimonial__time">
+                                                        31/08/2019, 18:21
+                                                    </div>
+                                                </div>
+                                                <div class="testimonial__text text-content text-md">
+                                                    Сразу скажу, консультируют круто, главное, нет заумных речей. Мне
+                                                    важно было сервис и обучение, в подарок поворотное устройство
+                                                    получила по акции. Очень довольна. Спасибо!
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="testimonials__bottom">
+                                        <a href="#" class="btn-default btn-default--border-gradient">
+                                            Оставить отзыв
+                                            <svg>
+                                                <use xlink:href="img/icons/sprites.svg#arrow-right"></use>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product__about-content" data-tab-content="2">
+                            <form action="/">
+    <div class="quiz" data-quiz>
+        <div class="quiz__body swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <h2 class="quiz__title title-2">
+                        Ответьте на 3 вопроса и узнайте стоимость оборудования
+                    </h2>
+                    <h3 class="quiz__subtitle title-3">
+                        Какие задачи должно выполнять оборудование?
+                    </h3>
+                    <div class="quiz__scroll-wrap">
+                        <ul class="quiz__question-list">
+                            <li>
+                                <label class="radio-with-img">
+                                    <input type="radio" name="group-1">
+                                    <div class="radio-with-img__img ibg">
+                                        <img src="img/photo/radio-with-img-1.jpg" alt="">
+                                    </div>
+                                    <div class="radio-with-img__title">Резать</div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="radio-with-img">
+                                    <input type="radio" name="group-1">
+                                    <div class="radio-with-img__img ibg">
+                                        <img src="img/photo/radio-with-img-2.jpg" alt="">
+                                    </div>
+                                    <div class="radio-with-img__title">Гравировать</div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="radio-with-img">
+                                    <input type="radio" name="group-1">
+                                    <div class="radio-with-img__img ibg">
+                                        <img src="img/photo/radio-with-img-3.jpg" alt="">
+                                    </div>
+                                    <div class="radio-with-img__title">Маркировать</div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="radio-with-img">
+                                    <input type="radio" name="group-1">
+                                    <div class="radio-with-img__img ibg">
+                                        <img src="img/photo/radio-with-img-4.jpg" alt="">
+                                    </div>
+                                    <div class="radio-with-img__title">Варить</div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="radio-with-img">
+                                    <input type="radio" name="group-1">
+                                    <div class="radio-with-img__img ibg">
+                                        <img src="img/photo/radio-with-img-5.jpg" alt="">
+                                    </div>
+                                    <div class="radio-with-img__title">Очищать</div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="radio-with-img">
+                                    <input type="radio" name="group-1">
+                                    <div class="radio-with-img__img ibg">
+                                        <img src="img/photo/radio-with-img-4.jpg" alt="">
+                                    </div>
+                                    <div class="radio-with-img__title">Варить</div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="radio-with-img">
+                                    <input type="radio" name="group-1">
+                                    <div class="radio-with-img__img ibg">
+                                        <img src="img/photo/radio-with-img-5.jpg" alt="">
+                                    </div>
+                                    <div class="radio-with-img__title">Очищать</div>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <h2 class="quiz__title title-2">
+                        Ответьте на 3 вопроса и узнайте стоимость оборудования
+                    </h2>
+                    <h3 class="quiz__subtitle title-3">
+                        Укажите размер рабочего поля в мм
+                    </h3>
+                    <div class="quiz__label">
+                        Выберите один или несколько
+                    </div>
+                    <div class="quiz__scroll-wrap">
+                        <ul class="quiz__question-list quiz__question-list--second">
+                            <li>
+                                <label class="checkbox-radio checkbox-radio--with-border">
+                                    <input type="checkbox">
+                                    <div class="checkbox-radio__square"></div>
+                                    <div class="checkbox-radio__text">
+                                        600х800
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="checkbox-radio checkbox-radio--with-border">
+                                    <input type="checkbox">
+                                    <div class="checkbox-radio__square"></div>
+                                    <div class="checkbox-radio__text">
+                                        400х400
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="checkbox-radio checkbox-radio--with-border">
+                                    <input type="checkbox">
+                                    <div class="checkbox-radio__square"></div>
+                                    <div class="checkbox-radio__text">
+                                        1300х900
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="checkbox-radio checkbox-radio--with-border">
+                                    <input type="checkbox">
+                                    <div class="checkbox-radio__square"></div>
+                                    <div class="checkbox-radio__text">
+                                        1600х1000
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="checkbox-radio checkbox-radio--with-border">
+                                    <input type="checkbox">
+                                    <div class="checkbox-radio__square"></div>
+                                    <div class="checkbox-radio__text">
+                                        1300х2500
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="checkbox-radio checkbox-radio--with-border">
+                                    <input type="checkbox">
+                                    <div class="checkbox-radio__square"></div>
+                                    <div class="checkbox-radio__text">
+                                        200х300
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="checkbox-radio checkbox-radio--with-border other">
+                                    <input type="checkbox">
+                                    <div class="checkbox-radio__square"></div>
+                                    <div class="checkbox-radio__text">
+                                        Другое...
+                                    </div>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <h2 class="quiz__title title-2">
+                        Ответьте на 3 вопроса и узнайте стоимость оборудования
+                    </h2>
+                    <h3 class="quiz__subtitle title-3">
+                        Выберите материал, с которым вы чаще всего планируете работать
+                    </h3>
+                    <div class="quiz__label">
+                        Выберите один или несколько
+                    </div>
+                    <div class="quiz__scroll-wrap">
+                        <ul class="quiz__question-list quiz__question-list--second">
+                            <li>
+                                <label class="checkbox-radio checkbox-radio--with-border">
+                                    <input type="checkbox">
+                                    <div class="checkbox-radio__square"></div>
+                                    <div class="checkbox-radio__text">
+                                        Фанера, дерево
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="checkbox-radio checkbox-radio--with-border">
+                                    <input type="checkbox">
+                                    <div class="checkbox-radio__square"></div>
+                                    <div class="checkbox-radio__text">
+                                        Ткань, текстиль, деним
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="checkbox-radio checkbox-radio--with-border">
+                                    <input type="checkbox">
+                                    <div class="checkbox-radio__square"></div>
+                                    <div class="checkbox-radio__text">
+                                        Металл, нержавейка, сталь и ь.д.
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="checkbox-radio checkbox-radio--with-border">
+                                    <input type="checkbox">
+                                    <div class="checkbox-radio__square"></div>
+                                    <div class="checkbox-radio__text">
+                                        ПВХ
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="checkbox-radio checkbox-radio--with-border">
+                                    <input type="checkbox">
+                                    <div class="checkbox-radio__square"></div>
+                                    <div class="checkbox-radio__text">
+                                        Оргстекло и пластик
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="checkbox-radio checkbox-radio--with-border">
+                                    <input type="checkbox">
+                                    <div class="checkbox-radio__square"></div>
+                                    <div class="checkbox-radio__text">
+                                        ABS, акрил, ардуино
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="checkbox-radio checkbox-radio--with-border">
+                                    <input type="checkbox">
+                                    <div class="checkbox-radio__square"></div>
+                                    <div class="checkbox-radio__text">
+                                        Алюминий, латунь
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="checkbox-radio checkbox-radio--with-border">
+                                    <input type="checkbox">
+                                    <div class="checkbox-radio__square"></div>
+                                    <div class="checkbox-radio__text">
+                                        гранит, камень, мрамор
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <label class="checkbox-radio checkbox-radio--with-border other">
+                                    <input type="checkbox">
+                                    <div class="checkbox-radio__square"></div>
+                                    <div class="checkbox-radio__text">
+                                        Другое...
+                                    </div>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <h2 class="quiz__title title-2">
+                        Оставьте свои контакты, и мы подберем для Вас идеальный вариант!
+                    </h2>
+                    <div class="request-form">
+                        <div class="request-form__items">
+                            <div class="request-form__item">
+                                <label for="" class="request-form__label">Ваше имя</label>
+                                <input type="text" class="input" placeholder="Введите имя">
+                            </div>
+                            <div class="request-form__item required" data-mask="+7(999) 999 99 99">
+                                <label for="" class="request-form__label">Телефон</label>
+                                <input type="text" class="input" placeholder="Введите номер" required="">
+                            </div>
+                            <div class="request-form__item">
+                                <button class="request-form__submit btn-default btn-default--gradient">
+                                    Отправить
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="quiz__bottom">
+            <div class="quiz__bottom-container">
+                <div class="quiz__progress-value">
+                    Готово: <span>0%</span>
+                </div>
+                <div class="quiz__progress swiper-pagination"></div>
+                <div class="quiz__buttons">
+                    <button type="button"
+                        class="quiz__btn quiz__btn-prev btn-default btn-default--border-gradient btn-default--icon-left">
+                        <div class="quiz__btn-icon-mob">
+                            <svg>
+                                <use xlink:href="img/icons/sprites.svg#chevron-left"></use>
+                            </svg>
+                        </div>
+                        <svg>
+                            <use xlink:href="img/icons/sprites.svg#arrow-left"></use>
+                        </svg>
+                        Назад
+                    </button>
+                    <button type="button" class="quiz__btn quiz__btn-next btn-default btn-default--gradient ">
+
+                        Далее
+                        <svg>
+                            <use xlink:href="img/icons/sprites.svg#arrow-right"></use>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+                            <div class="p-80"></div>
+                            <div class="product__about-content-row">
+                                <div class="description" data-description>
+    <h2 class="description__title title-2 title-space">Описание</h2>
+    <div class="description__text text-content text-md">
+        <h3>Лазерный маркер TOR LT</h3>
+        <p>
+            Cтанок для гравировки и маркировки по различным материалам таким как, металлы, пластики, кожа, ткани с неорганическими наполнителями и красителями. Модель TOR  LT  выполнена в настольном исполнении. Регулировка по высоте осуществляется путем поднятия и опускания координатного столика, регулируемого по оси Z в ручную. Данный маркер подойдет для работы с небольшими заготовками. На модель TOR  LT   можно установить рабочее поле 100х100 мм или 200х200 мм, станок отлично подойдет тем, кто занимается ювелирной или рекламной деятельностью.
+        </p>
+        <p>
+            Данное оборудование отлично подходит для прецизионной маркировки и гравировки. Маркер выполнен в настольном варианте. Лазерная голова регулируется по высоте. Позволяет работать с крупными и мелкими деталями, также на конвейере. Легко встраивается в линию.
+        </p>
+
+        <h4>Рабочее поле</h4>
+        <p>
+            Комплектация TOR LT включает линзу с полем 100x100 мм.
+        </p>
+        <div class="description__collapse-box text-content">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt illum ab voluptates explicabo atque ullam possimus ipsum nemo vero rem?
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt illum ab voluptates explicabo atque ullam possimus ipsum nemo vero rem?
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt illum ab voluptates explicabo atque ullam possimus ipsum nemo vero rem?
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae ullam fugiat reiciendis aspernatur quibusdam culpa ipsam fugit obcaecati doloremque quaerat, atque facilis minus consequatur? Temporibus unde dolorem delectus tempora ea minima earum perspiciatis expedita, perferendis fuga, nobis iste corporis porro?
+            </p>
+        </div>
+    </div>
+    <button class="description__btn-more">
+        Показать полностью
+    </button>
+</div>
+                            </div>
+                            <div class="product__about-content-row">
+                                <form action="/">
+                                    <div class="request-form request-form--second">
+                                        <div class="request-form__title">
+                                            Оставьте заявку и мы свяжемся с вами в ближайшее время
+                                        </div>
+                                        <div class="request-form__items">
+                                            <div class="request-form__item">
+                                                <label for="" class="request-form__label">Ваше имя</label>
+                                                <input type="text" class="input" placeholder="Введите имя">
+                                            </div>
+                                            <div class="request-form__item required" data-mask="+7(999) 999 99 99">
+                                                <label for="" class="request-form__label">Телефон</label>
+                                                <input type="text" class="input" placeholder="Введите номер" required>
+                                            </div>
+                                            <div class="request-form__item">
+                                                <button class="request-form__submit btn-default btn-default--gradient">
+                                                    Отправить
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="product__about-content" data-tab-content="3">
+                            <div class="haracteristics">
+                                <h2 class="haracteristics__title title-2 title-space">
+                                    Характеристики
+                                </h2>
+                                <ul class="haracteristics__list">
+                                    <li>
+                                        <div class="haracteristics__list-title">
+                                            Характеристики излучателя Raycus
+                                        </div>
+                                        <table class="haracteristics-tabel">
+                                            <tr>
+                                                <td>
+                                                    Тип лазерного излучателя
+                                                </td>
+                                                <td>
+                                                    иттербиевый импульсный волоконный
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Максимальная выходная мощность лазера
+                                                </td>
+                                                <td>
+                                                    в зависимости от комплектации, 20-50 Вт
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Минимальная высота символа
+                                                </td>
+                                                <td>
+                                                    0.2 мм
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Длина волны лазерного излучения
+                                                </td>
+                                                <td>
+                                                    1,064 мкм
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Длительность импульсов
+                                                </td>
+                                                <td>
+                                                    120 нс
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Частота следования импульсов
+                                                </td>
+                                                <td>
+                                                    регулируемая, 20-60 (20Вт), 30-60 (30Вт), 50-100 (50Вт)
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Ресурс работы лазерного излучателя
+                                                </td>
+                                                <td>
+                                                    100 000 часов
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Энергия в импульсе излучения
+                                                </td>
+                                                <td>
+                                                    До 1 мДж
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Скорость маркировки
+                                                </td>
+                                                <td>
+                                                    7000 мм/с
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </li>
+                                    <li>
+                                        <div class="haracteristics__list-title">
+                                            Характеристики системы сканации Sino-Galvo
+                                        </div>
+                                        <table class="haracteristics-tabel">
+                                            <tr>
+                                                <td>
+                                                    Сканирующее устройство
+                                                </td>
+                                                <td>
+                                                    2-х осевой гальванометрический сканатор
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Максимальная скорость перемещения луча
+                                                </td>
+                                                <td>
+                                                    регулируемая, до 7 000 мм/с
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Система лазерной фокусировки
+                                                </td>
+                                                <td>
+                                                    3-лучевая, интегрированная в систему сканации
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </li>
+                                    <li>
+                                        <div class="haracteristics__list-title">
+                                            Обрабатываемые материалы
+                                        </div>
+                                        <ul class="materials-list">
+                                            <li>
+                                                <div class="materials-list-card">
+                                                    <div class="materials-list-card__icon ibg">
+                                                        <img src="img/photo/materials-list-card-img-1.jpg" alt="">
+                                                    </div>
+                                                    <div class="materials-list-card__title">
+                                                        ABS, Акрил, ардуино (arduino)
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="materials-list-card">
+                                                    <div class="materials-list-card__icon ibg">
+                                                        <img src="img/photo/materials-list-card-img-2.jpg" alt="">
+                                                    </div>
+                                                    <div class="materials-list-card__title">
+                                                        Пластик
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="materials-list-card">
+                                                    <div class="materials-list-card__icon ibg">
+                                                        <img src="img/photo/materials-list-card-img-3.jpg" alt="">
+                                                    </div>
+                                                    <div class="materials-list-card__title">
+                                                        Дерево (фанера)
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="materials-list-card">
+                                                    <div class="materials-list-card__icon ibg">
+                                                        <img src="img/photo/materials-list-card-img-4.jpg" alt="">
+                                                    </div>
+                                                    <div class="materials-list-card__title">
+                                                        Металлы нержавеющая сталь (нержавейка)
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="product__about-content" data-tab-content="4">
+                            <div class="product__about-content-row">
+                                <div class="files">
+                                    <h2 class="files__title title-2 title-space">
+                                        Файлы
+                                    </h2>
+                                    <div class="files__subtitle">
+                                        Инструкции к программному обеспечению
+                                    </div>
+                                    <ul class="files__list">
+                                        <li>
+                                            <div class="files__label" style="background-color: #F01C24;">
+                                                PDF
+                                            </div>
+                                            <div class="files__warp">
+                                                <a href="#" class="files__link">
+                                                    Инструкция пользователя EZCAD (РУС).pdf
+                                                </a>
+                                                <div class="files__size">
+                                                    4,8 МБ
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="files__label" style="background-color: #0E78C0;">
+                                                ZIP
+                                            </div>
+                                            <div class="files__warp">
+                                                <a href="#" class="files__link">
+                                                    Драйверы jcz-x64-LmcV2.zip
+                                                </a>
+                                                <div class="files__size">
+                                                    18,9 МБ
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="product__about-content-row">
+                                <div class="text-wrap">
+                                    <h2 class="title-2 title-space">
+                                        Оборудование поставлено в города:
+                                    </h2>
+                                    <div class="text-content text-md last">
+                                        <ul>
+                                            <li>
+                                                Москва
+                                            </li>
+                                            <li>
+                                                Санкт-Петербург
+                                            </li>
+                                            <li>
+                                                Нижний Новгород
+                                            </li>
+                                            <li>
+                                                Владимир
+                                            </li>
+                                            <li>
+                                                Тверь
+                                            </li>
+                                            <li>
+                                                Кострома
+                                            </li>
+                                            <li>
+                                                Псков
+                                            </li>
+                                            <li>
+                                                Тамбов
+                                            </li>
+                                            <li>
+                                                Краснодар
+                                            </li>
+                                            <li>
+                                                Ростов-на-Дону
+                                            </li>
+                                            <li>
+                                                Челябинск
+                                            </li>
+                                            <li>
+                                                Омск
+                                            </li>
+                                            <li>
+                                                Новосибирск
+                                            </li>
+                                            <li>
+                                                Владивосток
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="p-80"></div>
+    </main>
+
+    <!-- == FOOTER ================== -->
+    <footer class="footer">
+    <div class="container d-flex justify-between flex-wrap">
+        <div class="footer__social">
+            <div class="footer__social-logo d-flex justify-between align-center"><a href="/"><img
+                        src="img/logo/logo.svg" alt=""></a>
+                <div class="messanger messanger__mob">
+                    <ul>
+                        <li><a class="viber" href="#"><svg width="19" height="20" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M13.923 8.604a.423.423 0 0 1-.295-.12.442.442 0 0 1-.133-.296c-.072-1.488-.756-2.216-2.155-2.29a.421.421 0 0 1-.296-.144.439.439 0 0 1-.11-.316.447.447 0 0 1 .14-.304.427.427 0 0 1 .31-.112c1.846.099 2.872 1.178 2.966 3.121a.447.447 0 0 1-.11.316.43.43 0 0 1-.296.144h-.021Z"
+                                        fill="#fff"></path>
+                                    <path
+                                        d="M16.121 9.356h-.009a.42.42 0 0 1-.3-.135.438.438 0 0 1-.119-.312c.032-1.497-.386-2.71-1.279-3.705-.892-.997-2.112-1.537-3.733-1.658a.425.425 0 0 1-.292-.15.445.445 0 0 1 .043-.616.423.423 0 0 1 .31-.106c1.824.137 3.271.789 4.303 1.94 1.032 1.151 1.54 2.606 1.503 4.315a.443.443 0 0 1-.128.302.424.424 0 0 1-.299.125Z"
+                                        fill="#fff"></path>
+                                    <path
+                                        d="M18.372 10.254a.424.424 0 0 1-.302-.127.443.443 0 0 1-.126-.308c-.02-2.641-.796-4.744-2.306-6.248-1.51-1.505-3.425-2.28-5.683-2.297a.42.42 0 0 1-.302-.13.439.439 0 0 1-.124-.31.445.445 0 0 1 .127-.308.424.424 0 0 1 .302-.128h.003c2.487.018 4.598.874 6.275 2.546 1.677 1.671 2.541 3.985 2.565 6.87a.448.448 0 0 1-.124.31.429.429 0 0 1-.302.13h-.003Z"
+                                        fill="#fff"></path>
+                                    <path
+                                        d="M11.448 14.03s.602.052.926-.356l.633-.813c.304-.403 1.04-.66 1.761-.25.54.315 1.064.657 1.571 1.025.478.36 1.458 1.195 1.46 1.195.467.403.575.994.257 1.617l-.002.013a6.718 6.718 0 0 1-1.316 1.656c-.006.003-.006.006-.012.01-.453.387-.898.607-1.336.66a.875.875 0 0 1-.195.012 1.73 1.73 0 0 1-.568-.09l-.014-.02c-.674-.195-1.8-.681-3.673-1.738a21.813 21.813 0 0 1-3.089-2.083 16.356 16.356 0 0 1-1.388-1.258l-.046-.048-.047-.048-.047-.047-.047-.048A16.345 16.345 0 0 1 5.046 12a22.403 22.403 0 0 1-2.04-3.153C1.974 6.93 1.498 5.782 1.308 5.092l-.02-.014a1.859 1.859 0 0 1-.088-.581.904.904 0 0 1 .012-.2c.056-.446.272-.901.65-1.366.002-.006.005-.006.008-.012a6.606 6.606 0 0 1 1.62-1.344c.004 0 .01-.004.013-.004.61-.324 1.189-.214 1.582.26.003.003.819 1.004 1.169 1.493.36.52.695 1.055 1.003 1.607.402.736.153 1.49-.244 1.8l-.796.647c-.401.331-.348.947-.348.947s1.178 4.557 5.58 5.705Z"
+                                        stroke="#fff" stroke-width="1.5"></path>
+                                </svg></a></li>
+                        <li><a class="whatsup" href="#"><svg width="24" height="25" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M4.259 16.95a8.996 8.996 0 1 1 3.147 3.147h0l-3.108.888a.749.749 0 0 1-.927-.928l.888-3.108h0Z"
+                                        stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    </path>
+                                    <path
+                                        d="M14.26 17.605a7.5 7.5 0 0 1-7.51-7.51A2.623 2.623 0 0 1 9.375 7.48v0a.646.646 0 0 1 .561.326l1.096 1.918a.75.75 0 0 1-.008.758l-.88 1.467a4.518 4.518 0 0 0 2.262 2.263v0l1.467-.88a.749.749 0 0 1 .758-.009l1.918 1.096a.646.646 0 0 1 .326.561v0a2.633 2.633 0 0 1-2.614 2.625v0Z"
+                                        stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    </path>
+                                </svg></a></li>
+                        <li><a class="telegram" href="#"><svg width="24" height="24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="m8.25 12.644 8.43 7.418a.749.749 0 0 0 1.226-.395L21.433 4.28a.75.75 0 0 0-1.006-.866L3.125 10.211a.75.75 0 0 0 .127 1.434l4.998 1Zm0 0 12.76-9.216"
+                                        stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    </path>
+                                    <path d="m12.46 16.35-2.93 2.929a.75.75 0 0 1-1.28-.53v-6.105" stroke="#fff"
+                                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__social-links">
+                <div class="title">Мы в социальных сетях</div>
+                <ul class="d-flex">
+                    <li><a href="#"><svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path clip-rule="evenodd"
+                                    d="M4.958 6.46H2.776c-.623 0-.748.275-.748.577 0 .54.74 3.222 3.444 6.769 1.803 2.421 4.343 3.734 6.655 3.734 1.387 0 1.559-.291 1.559-.794v-1.83c0-.583.13-.7.57-.7.324 0 .878.152 2.173 1.32 1.48 1.383 1.723 2.004 2.556 2.004h2.181c.624 0 .936-.291.756-.867-.197-.573-.903-1.405-1.84-2.392-.51-.562-1.272-1.167-1.503-1.47-.324-.39-.231-.562 0-.908 0 0 2.658-3.503 2.936-4.693.138-.432 0-.75-.66-.75h-2.182c-.555 0-.81.275-.95.577 0 0-1.109 2.53-2.68 4.174-.51.475-.74.627-1.018.627-.139 0-.34-.152-.34-.584V7.21c0-.519-.16-.75-.623-.75H9.633c-.346 0-.555.24-.555.47 0 .491.786.605.867 1.988v3.006c0 .66-.127.779-.405.779-.74 0-2.538-2.542-3.606-5.45-.209-.565-.419-.793-.976-.793Z"
+                                    stroke-width="2"></path>
+                            </svg></a></li>
+                    <li><a href="#"><svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="m15 12-4.5-3v6l4.5-3Z" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path
+                                    d="M2.25 12c0 2.79.288 4.426.507 5.267a1.492 1.492 0 0 0 .903 1.022C6.8 19.495 12 19.462 12 19.462s5.201.033 8.34-1.173a1.492 1.492 0 0 0 .903-1.022c.219-.84.507-2.477.507-5.267 0-2.79-.288-4.426-.507-5.268a1.492 1.492 0 0 0-.903-1.02C17.2 4.504 12 4.537 12 4.537S6.799 4.504 3.66 5.71a1.492 1.492 0 0 0-.903 1.021C2.538 7.574 2.25 9.21 2.25 12Z"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg> </a></li>
+                    <li><a href="#"><svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 15.75a3.75 3.75 0 1 0 0-7.5 3.75 3.75 0 0 0 0 7.5Z" stroke-width="2"
+                                    stroke-miterlimit="10"></path>
+                                <path
+                                    d="M16.125 3.375h-8.25a4.5 4.5 0 0 0-4.5 4.5v8.25a4.5 4.5 0 0 0 4.5 4.5h8.25a4.5 4.5 0 0 0 4.5-4.5v-8.25a4.5 4.5 0 0 0-4.5-4.5Z"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M16.875 8.25a1.125 1.125 0 1 0 0-2.25 1.125 1.125 0 0 0 0 2.25Z"
+                                    fill="#848484"></path>
+                            </svg></a></li>
+                    <li><a href="#"><svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path d="M15.75 8.25h-1.5A2.25 2.25 0 0 0 12 10.5V21m-3-7.5h6" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg></a></li>
+                    <li><a href="#"><svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12 8.25a3.75 3.75 0 0 1 7.188-1.5H22.5l-3.025 3.025A12 12 0 0 1 7.5 21c-3 0-3.75-1.125-3.75-1.125s3-1.125 4.5-3.375c0 0-6-3-4.5-11.25 0 0 3.75 3.75 8.249 4.5L12 8.25Z"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg></a></li>
+                    <li><a href="#"><svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M11.25 8.25 8.25 21m-2.48-6.323A7.5 7.5 0 1 1 19.5 10.5c0 4.142-3 6.75-6 6.75s-3.903-1.975-3.903-1.975"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg></a></li>
+                    <li><a href="#"><svg width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M15.75 9.936A8.959 8.959 0 0 0 21 11.625v-3.75a5.25 5.25 0 0 1-5.25-5.25H12v12a2.625 2.625 0 1 1-3.75-2.372V8.349a6.376 6.376 0 1 0 7.5 6.276v-4.69Z"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg></a></li>
+                </ul>
+            </div>
+            <div class="footer__social-form">
+                <div class="title">Оставайтесь на связи</div>
+                <form>
+                    <input type="email" placeholder="Ваш e-mail">
+                </form>
+            </div>
+            <div class="footer__social-code d-flex align-center"><img src="img/photo/code.png" alt="">
+                <p>Отсканируйте QR-код<br> для сохранения<br> контактов Laser-TOR.ru</p>
+            </div>
+        </div>
+        <div class="footer__nav accordion d-flex flex-wrap">
+            <div class="footer__nav-item">
+                <div class="accordion__link title d-flex justify-between align-center">О компании
+                    <div class="title__icon"><svg width="12" height="7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11 1 6 6 1 1" stroke="#000" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </svg></div>
+                </div>
+                <div class="accordion__wrap footer__nav-item-wrap">
+                    <nav>
+                        <ul>
+                            <li><a href="#">О компании</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Инструкции</a></li>
+                            <li><a href="#">Кредит и лизинг</a></li>
+                            <li><a href="#">Доставка</a></li>
+                            <li><a href="#">Политика конфиденциальности</a></li>
+                            <li><a href="#">Условия использования</a></li>
+                        </ul>
+                    </nav>
+                    <div class="messanger messanger__desktop">
+                        <ul>
+                            <li><a class="viber" href="#"><svg width="19" height="20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M13.923 8.604a.423.423 0 0 1-.295-.12.442.442 0 0 1-.133-.296c-.072-1.488-.756-2.216-2.155-2.29a.421.421 0 0 1-.296-.144.439.439 0 0 1-.11-.316.447.447 0 0 1 .14-.304.427.427 0 0 1 .31-.112c1.846.099 2.872 1.178 2.966 3.121a.447.447 0 0 1-.11.316.43.43 0 0 1-.296.144h-.021Z"
+                                            fill="#fff"></path>
+                                        <path
+                                            d="M16.121 9.356h-.009a.42.42 0 0 1-.3-.135.438.438 0 0 1-.119-.312c.032-1.497-.386-2.71-1.279-3.705-.892-.997-2.112-1.537-3.733-1.658a.425.425 0 0 1-.292-.15.445.445 0 0 1 .043-.616.423.423 0 0 1 .31-.106c1.824.137 3.271.789 4.303 1.94 1.032 1.151 1.54 2.606 1.503 4.315a.443.443 0 0 1-.128.302.424.424 0 0 1-.299.125Z"
+                                            fill="#fff"></path>
+                                        <path
+                                            d="M18.372 10.254a.424.424 0 0 1-.302-.127.443.443 0 0 1-.126-.308c-.02-2.641-.796-4.744-2.306-6.248-1.51-1.505-3.425-2.28-5.683-2.297a.42.42 0 0 1-.302-.13.439.439 0 0 1-.124-.31.445.445 0 0 1 .127-.308.424.424 0 0 1 .302-.128h.003c2.487.018 4.598.874 6.275 2.546 1.677 1.671 2.541 3.985 2.565 6.87a.448.448 0 0 1-.124.31.429.429 0 0 1-.302.13h-.003Z"
+                                            fill="#fff"></path>
+                                        <path
+                                            d="M11.448 14.03s.602.052.926-.356l.633-.813c.304-.403 1.04-.66 1.761-.25.54.315 1.064.657 1.571 1.025.478.36 1.458 1.195 1.46 1.195.467.403.575.994.257 1.617l-.002.013a6.718 6.718 0 0 1-1.316 1.656c-.006.003-.006.006-.012.01-.453.387-.898.607-1.336.66a.875.875 0 0 1-.195.012 1.73 1.73 0 0 1-.568-.09l-.014-.02c-.674-.195-1.8-.681-3.673-1.738a21.813 21.813 0 0 1-3.089-2.083 16.356 16.356 0 0 1-1.388-1.258l-.046-.048-.047-.048-.047-.047-.047-.048A16.345 16.345 0 0 1 5.046 12a22.403 22.403 0 0 1-2.04-3.153C1.974 6.93 1.498 5.782 1.308 5.092l-.02-.014a1.859 1.859 0 0 1-.088-.581.904.904 0 0 1 .012-.2c.056-.446.272-.901.65-1.366.002-.006.005-.006.008-.012a6.606 6.606 0 0 1 1.62-1.344c.004 0 .01-.004.013-.004.61-.324 1.189-.214 1.582.26.003.003.819 1.004 1.169 1.493.36.52.695 1.055 1.003 1.607.402.736.153 1.49-.244 1.8l-.796.647c-.401.331-.348.947-.348.947s1.178 4.557 5.58 5.705Z"
+                                            stroke="#fff" stroke-width="1.5"></path>
+                                    </svg></a></li>
+                            <li><a class="whatsup" href="#"><svg width="24" height="25" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M4.259 16.95a8.996 8.996 0 1 1 3.147 3.147h0l-3.108.888a.749.749 0 0 1-.927-.928l.888-3.108h0Z"
+                                            stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round"></path>
+                                        <path
+                                            d="M14.26 17.605a7.5 7.5 0 0 1-7.51-7.51A2.623 2.623 0 0 1 9.375 7.48v0a.646.646 0 0 1 .561.326l1.096 1.918a.75.75 0 0 1-.008.758l-.88 1.467a4.518 4.518 0 0 0 2.262 2.263v0l1.467-.88a.749.749 0 0 1 .758-.009l1.918 1.096a.646.646 0 0 1 .326.561v0a2.633 2.633 0 0 1-2.614 2.625v0Z"
+                                            stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round"></path>
+                                    </svg></a></li>
+                            <li><a class="telegram" href="#"><svg width="24" height="24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="m8.25 12.644 8.43 7.418a.749.749 0 0 0 1.226-.395L21.433 4.28a.75.75 0 0 0-1.006-.866L3.125 10.211a.75.75 0 0 0 .127 1.434l4.998 1Zm0 0 12.76-9.216"
+                                            stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round"></path>
+                                        <path d="m12.46 16.35-2.93 2.929a.75.75 0 0 1-1.28-.53v-6.105" stroke="#fff"
+                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__nav-item">
+                <div class="accordion__link title d-flex justify-between align-center">Каталог продукции
+                    <div class="title__icon"><svg width="12" height="7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11 1 6 6 1 1" stroke="#000" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </svg></div>
+                </div>
+                <div class="accordion__wrap footer__nav-item-wrap">
+                    <nav>
+                        <ul>
+                            <li><a href="#">Лазерные станки с ЧПУ, граверы</a></li>
+                            <li><a href="#">Лазерные маркеры, маркираторы</a></li>
+                            <li><a href="#">Лазерные граверы по металлу</a></li>
+                            <li><a href="#">Станки для резки металла</a></li>
+                            <li><a href="#">Труборезы</a></li>
+                            <li><a href="#">Лазерная сварка и пайка</a></li>
+                            <li><a href="#">Лазерная очистка</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="footer__nav-item footer__nav-item-contacts">
+                <div class="accordion__link title d-flex justify-between align-center">Контакты
+                    <div class="title__icon"><svg width="12" height="7" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11 1 6 6 1 1" stroke="#000" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </svg></div>
+                </div>
+                <div class="accordion__wrap footer__nav-item-wrap">
+                    <div class="d-flex">
+                        <div><svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 8.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" stroke="#848484" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M13 6.5c0 4.5-5 8-5 8s-5-3.5-5-8a5 5 0 1 1 10 0v0Z" stroke="#848484"
+                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg></div>
+                        <div>
+                            <p>Офис и Демо-зал в Санкт-Петербурге 192289, г. Санкт-Петербург, ул. Малая Балканская д.59,
+                                корп.1Б офис 107</p>
+                            <p>109052, г. Москва, Нижегородская ул., 33, офис 101 - офис</p>
+                            <p>140002, г. Люберцы, 65 лет победы д.1 лит. Ф - демо-зал в Москве</p>
+                            <p>620014, г. Екатеринбург, Шейнкмана 7, кабинет 107</p>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div><svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M9.71 6.328a5.272 5.272 0 0 0-3.443.008.496.496 0 0 0-.32.372l-.369 1.844a.5.5 0 0 1-.304.367L2.317 10.1a.498.498 0 0 1-.58-.154A3 3 0 0 1 1.99 5.99a8.5 8.5 0 0 1 12.02 0 3 3 0 0 1 .252 3.957.499.499 0 0 1-.579.154l-2.96-1.183a.5.5 0 0 1-.303-.362l-.388-1.86a.496.496 0 0 0-.321-.368ZM2.5 12.5h11"
+                                    stroke="#848484" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                </path>
+                            </svg></div>
+                        <div>
+                            <p>+7 (800) 500-57-83<br> +7 (495) 540-57-83<br> +7 (812) 332-52-86<br> Пн-Пт: 10.00 - 19.00
+                            </p>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div><svg width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14 3.5 8 9 2 3.5" stroke="#848484" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path
+                                    d="M2 3.5h12V12a.5.5 0 0 1-.5.5h-11A.5.5 0 0 1 2 12V3.5ZM6.91 8l-4.756 4.359m11.692 0L9.09 8"
+                                    stroke="#848484" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                </path>
+                            </svg></div>
+                        <div><a href="mailto:info@laser-tor.ru">info@laser-tor.ru</a><a href="#">Посмотреть на карте</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+    <!-- == // FOOTER ================== -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="js/jQueryScripts.min.js"></script>
+</body>
+
+</html>
