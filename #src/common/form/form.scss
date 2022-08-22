@@ -123,6 +123,7 @@
     align-items: center;
     position: relative;
     cursor: pointer;
+    user-select: none;
 
     & input {
         position: absolute;
@@ -140,6 +141,7 @@
     }
 
     &__square {
+        background-color: #fff;
         flex: 0 0 auto;
         height: 2.4rem;
         width: 2.4rem;
@@ -155,6 +157,14 @@
         font-weight: 400;
         font-size: 1.4rem;
         line-height: 1.29em;
+    }
+
+    &.inactive {
+        pointer-events: none;
+
+        & .checkbox-radio__text {
+            color: #DBDBDB;
+        }
     }
 
     &--with-border {

@@ -1,0 +1,51 @@
+.tiktok-videos {
+    overflow: hidden;
+    @media (max-width: $md2+px) {
+        margin-left: -32px;
+        margin-right: -32px;
+        padding: 0 32px;
+    }
+    @media (max-width: $md3+px) {
+        margin-left: -16px;
+        margin-right: -16px;
+        padding: 0 16px;
+    }
+    &__title {
+    }
+
+    &__slider {
+        @media (max-width: $md2+px) {
+            overflow: visible;
+        }
+        & .swiper-slide {
+            @media (max-width: $md2+px) {
+                width: 20rem;
+            }
+        }
+    }
+
+    &__item {
+        height: 0;
+        padding-bottom: 156.5%;
+        position: relative;
+        margin-bottom: 1.2rem;
+
+        & img,
+        & video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            object-fit: cover;
+        }
+    }
+
+    &__item-title {
+        font-weight: 600;
+        font-size: 1.4rem;
+        line-height: 1.71em;
+        letter-spacing: -0.005em;
+    }
+}

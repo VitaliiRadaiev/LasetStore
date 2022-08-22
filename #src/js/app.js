@@ -5,6 +5,8 @@ class App {
 	constructor() {
 		this.utils = new Utils();
 		this.dynamicAdapt = new DynamicAdapt('max');
+		this.scrollAnimation = null;
+		this.allRangeSliders = [];
 	}
 
 	init() {
@@ -53,6 +55,7 @@ class App {
 		@@include('../common/carousel/carousel.js');
 		@@include('../common/gallery/gallery.js');
 		@@include('../common/product-images/product-images.js');
+		@@include('../common/tiktok-videos/tiktok-videos.js');
 	}
 
 
@@ -202,6 +205,29 @@ class App {
 
 					if (el) {
 						e.preventDefault();
+
+						if(el.closest('[data-tab-content]')) {
+							let tabId = el.closest('[data-tab-content]').dataset.tabContent;
+							let tabsContainer = el.closest('[data-tabs]');
+							let triggers = tabsContainer.querySelectorAll('[data-tab-trigger]');
+							let tabContentBoxes = tabsContainer.querySelectorAll('[data-tab-content]');
+
+							triggers.forEach(i => {
+								if(i.dataset.tabTrigger === tabId) {
+									i.classList.add('tab-active');
+								} else {
+									i.classList.remove('tab-active');
+								}
+							})
+							tabContentBoxes.forEach(i => {
+								if(i.dataset.tabContent === tabId) {
+									i.classList.add('tab-active');
+								} else {
+									i.classList.remove('tab-active');
+								}
+							})
+						}
+
 						let top = Math.abs(document.body.getBoundingClientRect().top) + el.getBoundingClientRect().top;
 
 						if (header) {
@@ -209,7 +235,7 @@ class App {
 						}
 
 						window.scrollTo({
-							top: top,
+							top: top - 20,
 							behavior: 'smooth',
 						})
 					} else {
@@ -282,6 +308,9 @@ class App {
 		@@include('../common/product-action-card/product-action-card.js');
 		@@include('../common/quiz/quiz.js');
 		@@include('../common/description/description.js');
+		@@include('../common/quantity/quantity.js');
+		@@include('../common/main-filter/main-filter.js');
+		@@include('../common/price-range/price-range.js');
 
 		document.querySelectorAll(".accordion__link").forEach((e=>{e&&e.addEventListener("click",(function(){this.classList.toggle("active");let e=this.nextElementSibling;e.style.maxHeight?e.style.maxHeight=null:e.style.maxHeight=e.scrollHeight+"px"}))})),document.querySelectorAll(".accordion__item-title").forEach((e=>{e&&e.addEventListener("click",(function(){this.classList.toggle("active");let e=this.nextElementSibling;e.style.maxHeight?e.style.maxHeight=null:e.style.maxHeight=e.scrollHeight+"px"}))}))
 	}

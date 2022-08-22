@@ -1,19 +1,57 @@
 .quantity {
-	width: 9rem;
-	height: 3.7rem;
+	--height: 5.6rem;
 	display: flex;
-	padding-bottom: 0.8rem;
-	border-bottom: 1px solid $borderColor;
+	align-items: center;
+	justify-content: space-between;
+	min-height: var(--height);
+	font-size: 1.8rem;
+	line-height: 1.2em;
+	position: relative;
+	color: $mainColor;
+	position: relative;
+	background-color: transparent;
+	overflow: hidden;
+	border-radius: 200px;
 
 	@media (max-width: $md3+px) {
-		height: 30px;
-		padding-bottom: 4px;
+		--height: 4rem;
+		font-size: 14px;
+	}
+
+	&:before {
+		background-image: linear-gradient(90deg, #DA121A 18.19%, #0E78C0 100%);
+		background-position: center;
+		position: absolute;
+		content: '';
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: -1;
+	}
+
+	&:after {
+		position: absolute;
+		content: '';
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: calc(100% - 0.4rem);
+		height: calc(100% - 0.4rem);
+		z-index: -1;
+		border-radius: 200px;
+		background-color: #fff;
+		transition: all .3s ease;
 	}
 
 	&__button {
-		flex: 0 0 30px;
+		flex: 0 0 auto;
 		position: relative;
+		height: var(--height);
+		width: var(--height);
+		border-radius: 50%;
 		cursor: pointer;
+		transition: all .15s ease-in-out;
 		&::before,
 		&::after {
 			content: "";
@@ -21,46 +59,47 @@
 			top: 50%;
 			left: 50%;
 			transition: all 0.3s ease 0s;
-			margin: 0px 0px 0px -4.5px;
-			background-color: #a6a6a6;
+			background-color: $mainColor;
 			width: 9px;
-			height: 1px;
+			height: 2px;
 		}
 		@media (min-width: $md2+px) {
 			&:hover {
-				&::before,
-				&::after {
-					background-color: rgba(0, 0, 0, 0.5);
-				}
+				background-color: rgba(#000, 0.08);
 			}
 		}
 		// .quantity__button_plus
 		&--minus {
-			margin-left: -0.9rem;
+			&::after, &::before {
+				transform: translateX(-50%);
+			}
 
 		}
 		// .quantity__button_minus
 		&--plus {
-			margin-right: -0.9rem;
+			&::after {
+				transform: translateX(-50%);
+			}
 
 			&::before {
-				transform: rotate(-90deg);
+				transform: translateX(-50%) rotate(-90deg) ;
 			}
 		}
 	}
 	// .quantity__input
 	&__input {
 		flex: 1 1 auto;
-		padding: 0 0.6rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding-left: 1rem;
+
 		input {
             background: transparent;
 			height: 100%;
-			color: $textColor;
-			font-size: 14px;
-			font-weight: 600;
-			font-family: $titleFontFamily;
-			width: 100%;
-			text-align: center;
+			color: inherit;
+			font-size: inherit;
+			width: 2.6rem;
 			border: none;
 			outline: none;
 			box-shadow: none;

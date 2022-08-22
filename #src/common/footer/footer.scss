@@ -1,3 +1,7 @@
 .footer {
     border-top: 1px solid #EEEEEE;
+
+    &__nav.accordion {
+        border-top: none;
+    }
 }

@@ -1,0 +1,46 @@
+.table-wrap {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 95.6rem;
+}
+.main-table {
+    width: 100%;
+    font-weight: 500;
+    font-size: 1.8rem;
+    line-height: 1.33em;
+
+    @media (max-width: $md3+px) {
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    & tr {
+        &:nth-child(even) {
+            & td {
+                background: #e7f5ff;
+            }
+        }
+    }
+
+    & th {
+        padding-bottom: 1.8rem;
+        font-weight: 500;
+        height: auto;
+
+        @media (max-width: $md3+px) {
+            font-size: 14px;
+            line-height: 20px;
+            padding-bottom: 8px;
+        }
+    }
+
+    & td {
+        height: 5.6rem;
+        padding:1.6rem;
+
+        @media (max-width: $md3+px) {
+            height: 48px;
+            padding: 16px 8px;
+        }
+    }
+}
