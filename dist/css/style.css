@@ -3875,6 +3875,7 @@ figure {
           align-items: center;
   gap: 3.2rem;
   margin-right: 4.6rem;
+  color: #000;
 }
 
 .header__contacts label {
@@ -3891,6 +3892,7 @@ figure {
   font-size: 1.4rem;
   line-height: 1.35em;
   letter-spacing: -0.005em;
+  color: #000000 !important;
 }
 
 .header__search {
@@ -4791,6 +4793,10 @@ figure {
 .gallery__nav-wrap {
   margin-bottom: 4rem;
   position: relative;
+}
+
+.gallery__body:not(:last-child) {
+  margin-bottom: 6rem;
 }
 
 .gallery__img {

@@ -33,6 +33,9 @@
     }
 
     &__body {
+        &:not(:last-child) {
+            margin-bottom: 6rem;
+        }
     }
 
     &__slider {

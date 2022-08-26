@@ -87,6 +87,7 @@
         align-items: center;
         gap: 3.2rem;
         margin-right: 4.6rem;
+        color: #000;
 
         @media (max-width: $md2+px) {
             display: none;
@@ -106,6 +107,7 @@
             font-size: 1.4rem;
             line-height: 1.35em;
             letter-spacing: -0.005em;
+            color: $textColor !important;
         }
     }
 
