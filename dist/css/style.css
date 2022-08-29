@@ -9023,6 +9023,13 @@ figure {
     line-height: 20px;
   }
 
+  .text-content p,
+  .text-content ul,
+  .text-content ol,
+  .text-content figure {
+    margin-bottom: 1.4em;
+  }
+
   .text-content q {
     padding: 24px 16px;
   }
@@ -9696,6 +9703,18 @@ figure {
 
   .about__text-row:not(:last-child) {
     margin-bottom: 40px;
+  }
+
+  .about__text-row h3 {
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -0.005em;
+  }
+
+  .about__text-row--first h3 {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0;
   }
 
   .main-grid {

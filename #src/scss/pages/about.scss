@@ -14,6 +14,24 @@
                 margin-bottom: 40px;
             }
         }
+
+        & h3 {
+            @media (max-width: $md3+px) {
+                font-size: 24px;
+                line-height: 32px;
+                letter-spacing: -0.005em;
+            }
+        }
+
+        &--first {
+            & h3 {
+                @media (max-width: $md3+px) {
+                    font-size: 14px;
+                    line-height: 20px;
+                    letter-spacing: 0;
+                }
+            }
+        }
     }
 }
 
@@ -101,7 +119,7 @@
 
     &__submit {
         width: 100%;
-        
+
         @media (max-width: $md3+px) {
             margin-top: 8px;
         }
@@ -128,7 +146,6 @@
             & .request-form__item {
                 flex: 0 1 calc(33.3333333% - (2.4rem * 2 / 3));
                 margin-bottom: 0;
-
             }
         }
     }

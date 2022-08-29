@@ -655,6 +655,10 @@ figure {
 	& ol,
 	& figure {
 		margin-bottom: 1.5em;
+
+		@media (max-width: $md3+px) {
+			margin-bottom: 1.4em;
+		}
 	}
 
 	& a {
