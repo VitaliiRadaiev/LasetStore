@@ -5462,10 +5462,24 @@ figure {
   border: none;
   padding-top: 0.8rem;
   padding-bottom: 2.4rem;
+  width: 100%;
 }
 
 .quiz__body .request-form .input {
   background: #f4f4f4;
+}
+
+.quiz__last-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .quiz__title {
@@ -7817,6 +7831,10 @@ figure {
   z-index: 1;
 }
 
+.product__about-content:not(:last-child) {
+  margin-bottom: 8rem;
+}
+
 .product__about-tabs {
   margin-bottom: 4rem;
 }
@@ -8760,7 +8778,7 @@ figure {
 
 @media (max-width: 991.98px) {
   html {
-    font-size: 7px;
+    font-size: 8px;
   }
 
   .container-sm {
@@ -9799,6 +9817,10 @@ figure {
 
   .product__preview-actions-item {
     font-size: 0;
+  }
+
+  .product__about-content:not(:last-child) {
+    margin-bottom: 4rem;
   }
 
   .product__about-content-row:not(:last-child) {

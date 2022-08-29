@@ -263,6 +263,16 @@
         }
     }
 
+    &__about-content {
+        &:not(:last-child) {
+            margin-bottom: 8rem;
+
+            @media (max-width: $md3+px) {
+                margin-bottom: 4rem;
+            }
+        }
+    }
+
     &__about-tabs {
         margin-bottom: 4rem;
     }

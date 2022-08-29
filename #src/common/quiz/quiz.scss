@@ -26,12 +26,19 @@
             border: none;
             padding-top: 0.8rem;
             padding-bottom: 2.4rem;
+            width: 100%;
 
 
             & .input {
                 background: #f4f4f4;
             }
         }
+    }
+
+    &__last-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     &__title {
