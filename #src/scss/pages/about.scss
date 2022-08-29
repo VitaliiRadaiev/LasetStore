@@ -30,7 +30,7 @@
     }
 
     &__side {
-        flex: 0 0 31rem;
+        flex: 0 0 30.6rem;
         position: relative;
     }
 
@@ -101,6 +101,10 @@
 
     &__submit {
         width: 100%;
+        
+        @media (max-width: $md3+px) {
+            margin-top: 8px;
+        }
     }
 
     &--second {
@@ -137,6 +141,10 @@
     border-radius: 1.6rem;
     text-align: center;
 
+    @media (max-width: $md3+px) {
+        padding: 2.3rem 1.6rem;
+    }
+
     &__row {
         &:not(:last-child) {
             margin-bottom: 3.2rem;
@@ -161,6 +169,10 @@
         align-items: center;
         justify-content: space-between;
         gap: 1.6rem;
+
+        @media (max-width: $md3+px) {
+            padding: 0 7px;
+        }
 
         & a {
             display: flex;

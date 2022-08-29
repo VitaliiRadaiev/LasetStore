@@ -7497,8 +7497,8 @@ figure {
 
 .main-grid__side {
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 31rem;
-          flex: 0 0 31rem;
+      -ms-flex: 0 0 30.6rem;
+          flex: 0 0 30.6rem;
   position: relative;
 }
 
@@ -9714,8 +9714,20 @@ figure {
     margin-bottom: 16px;
   }
 
+  .request-form__submit {
+    margin-top: 8px;
+  }
+
+  .contact-box {
+    padding: 2.3rem 1.6rem;
+  }
+
   .contact-box__row:not(:last-child) {
     margin-bottom: 24px;
+  }
+
+  .contact-box__social {
+    padding: 0 7px;
   }
 
   .product-detail-head {
