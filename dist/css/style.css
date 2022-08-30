@@ -4341,6 +4341,14 @@ figure {
   border-top: none;
 }
 
+.footer__nav-item-wrap .d-flex svg {
+  vertical-align: top;
+}
+
+.footer__nav-item-wrap .d-flex a {
+  line-height: 1.3;
+}
+
 .btn-default {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
