@@ -438,6 +438,10 @@ figure {
             line-height: 18px;
         }
 
+		& span {
+			color: $textColorSecondary;
+		}
+
         &.tab-active, &.active {
             color: #4e50a0;
         }
