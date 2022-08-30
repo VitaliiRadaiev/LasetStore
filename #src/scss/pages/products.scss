@@ -461,3 +461,39 @@
         }
     }
 }
+
+.products-page {
+    & .benefits__item-footer p {
+        font-weight: 500;
+        font-size: 1.4rem;
+        line-height: 1.29em;
+
+        @media (max-width: $md3+px) {
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 18px;
+        }
+    }
+
+    & .benefits__item {
+        padding: 0;
+    }
+
+    & .benefits__item-header {
+        margin-bottom: 2px;
+
+        & .text-md {
+            @media (max-width: $md3+px) {
+                font-weight: 700;
+                font-size: 16px;
+                line-height: 22px;
+            }
+        }
+    }
+
+    & .benefits .col-4 {
+        @media (min-width: 768px) {
+            margin-bottom: 57px;
+        }
+    }
+}

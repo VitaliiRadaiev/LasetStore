@@ -3229,7 +3229,7 @@ a {
   -webkit-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
-  color: #4E50A0;
+  color: #4e50a0;
 }
 
 a:hover {
@@ -3379,7 +3379,7 @@ figure {
 }
 
 .status--available {
-  color: #55B708;
+  color: #55b708;
 }
 
 .status--available::before {
@@ -3677,9 +3677,6 @@ figure {
   border-radius: 2.4rem;
   display: block;
   padding: 4rem 6.5rem;
-  font-weight: 500;
-  font-size: 1.4rem;
-  line-height: 1.71em;
   max-width: 95.6rem;
   margin-left: auto;
   margin-right: auto;
@@ -3692,6 +3689,37 @@ figure {
 .text-content q:before,
 .text-content q:after {
   display: none;
+}
+
+.text-content q.text {
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 1.71em;
+  max-width: 79.4rem;
+}
+
+.text-content q.text p,
+.text-content q.text ul,
+.text-content q.text ol,
+.text-content q.text figure {
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 1.71em;
+}
+
+.text-content q.text-sm {
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 1.5em;
+}
+
+.text-content q.text-sm p,
+.text-content q.text-sm ul,
+.text-content q.text-sm ol,
+.text-content q.text-sm figure {
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 1.5em;
 }
 
 .text-content figure {
@@ -8485,6 +8513,20 @@ figure {
   margin-bottom: 0;
 }
 
+.products-page .benefits__item-footer p {
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 1.29em;
+}
+
+.products-page .benefits__item {
+  padding: 0;
+}
+
+.products-page .benefits__item-header {
+  margin-bottom: 2px;
+}
+
 @media (min-width: 576px) {
   .w-sm-auto {
     width: auto !important;
@@ -8595,6 +8637,10 @@ figure {
     border: 1px solid #e3e3e3;
     border-radius: 1.6rem;
     padding: 2.4rem;
+  }
+
+  .products-page .benefits .col-4 {
+    margin-bottom: 57px;
   }
 }
 
@@ -9060,9 +9106,9 @@ figure {
     z-index: 2;
     height: 100%;
     width: 32px;
-    background: -webkit-gradient(linear, right top, left top, from(#FFFFFF), to(rgba(255, 255, 255, 0)));
-    background: -o-linear-gradient(right, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
-    background: linear-gradient(270deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 100%);
+    background: -webkit-gradient(linear, right top, left top, from(#ffffff), to(rgba(255, 255, 255, 0)));
+    background: -o-linear-gradient(right, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(270deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
     pointer-events: none;
   }
 
@@ -9140,6 +9186,15 @@ figure {
 
   .text-content q {
     padding: 24px 16px;
+  }
+
+  .text-content q.text-sm p,
+  .text-content q.text-sm ul,
+  .text-content q.text-sm ol,
+  .text-content q.text-sm figure {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
   }
 
   .text-content video {
@@ -10159,6 +10214,18 @@ figure {
   .info-list-card__text.text {
     font-size: 12px;
     line-height: 20px;
+  }
+
+  .products-page .benefits__item-footer p {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .products-page .benefits__item-header .text-md {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
   }
 }
 
