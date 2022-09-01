@@ -1,0 +1,16 @@
+.products__category {
+    @media (max-width: 1279.98px) and (min-width: 768px) {
+        & .row__fixed {
+            & > div {
+                &:nth-child(1), &:nth-child(3), &:nth-child(4) {
+                    display: flex;
+                    gap: 16px;
+
+                    & > * {
+                        flex: 0 1 calc(50% - 8px);
+                    }
+                }
+            }
+        }
+    }
+}

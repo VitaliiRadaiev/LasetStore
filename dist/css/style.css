@@ -3475,6 +3475,8 @@ figure {
 
 .tabs-nav__list-item span {
   color: #848484;
+  font-weight: 500;
+  margin-left: 0.8rem;
 }
 
 .tabs-nav__list-item.tab-active,
@@ -4209,11 +4211,13 @@ figure {
   margin-bottom: 0;
   position: absolute;
   top: 100%;
-  min-width: 100%;
+  min-width: 140%;
   color: #fff;
   background-color: #cc0606;
   -webkit-animation: fadeIn 0.15s ease-in-out;
           animation: fadeIn 0.15s ease-in-out;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .sub-menu__link {
@@ -4222,8 +4226,22 @@ figure {
   font-size: 1.4rem;
   line-height: 1.57em;
   padding: 0.6rem 1.6rem;
-  display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   color: inherit;
+  gap: 2rem;
+}
+
+.sub-menu__link img {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  width: 2.4rem;
+  height: auto;
 }
 
 @-webkit-keyframes fadeIn {
@@ -8965,11 +8983,13 @@ figure {
   }
 
   .sub-menu {
+    min-width: 100%;
     display: block;
     background-color: transparent;
     position: relative;
     padding-left: 1.4rem;
     padding-top: 0.8rem;
+    padding-bottom: 0;
   }
 
   .sub-menu > li:not(:last-child) {
@@ -10283,5 +10303,24 @@ figure {
 
   .quiz__btn-next:hover:after {
     opacity: 0;
+  }
+}
+
+@media (max-width: 1279.98px) and (min-width: 768px) {
+  .products__category .row__fixed > div:nth-child(1),
+  .products__category .row__fixed > div:nth-child(3),
+  .products__category .row__fixed > div:nth-child(4) {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 16px;
+  }
+
+  .products__category .row__fixed > div:nth-child(1) > *,
+  .products__category .row__fixed > div:nth-child(3) > *,
+  .products__category .row__fixed > div:nth-child(4) > * {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 1 calc(50% - 8px);
+            flex: 0 1 calc(50% - 8px);
   }
 }

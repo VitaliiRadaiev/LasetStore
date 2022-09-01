@@ -377,18 +377,22 @@
     margin-bottom: 0;
     position: absolute;
     top: 100%;
-    min-width: 100%;
+    min-width: 140%;
     color: #fff;
     // background-color: #ff0000;
     background-color: #cc0606;
     animation: fadeIn 0.15s ease-in-out;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 
     @media (max-width: $md2+px) {
+        min-width: 100%;
         display: block;
         background-color: transparent;
         position: relative;
         padding-left: 1.4rem;
         padding-top: 0.8rem;
+        padding-bottom: 0;
 
         & > li {
             &:not(:last-child) {
@@ -416,11 +420,19 @@
         font-size: 1.4rem;
         line-height: 1.57em;
         padding: 0.6rem 1.6rem;
-        display: block;
+        display: flex;
+        align-items: center;
         color: inherit;
+        gap: 2rem;
 
         @media (max-width: $md2+px) {
             padding: 0;
+        }
+
+        & img {
+            flex: 0 0 auto;
+            width: 2.4rem;
+            height: auto;
         }
     }
 }
