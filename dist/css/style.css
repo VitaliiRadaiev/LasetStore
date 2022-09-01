@@ -7608,6 +7608,10 @@ figure {
   padding: 1.6rem;
 }
 
+.products__category a {
+  color: #000000;
+}
+
 .about__text-row > *:last-child {
   margin-bottom: 0;
 }
@@ -8817,6 +8821,10 @@ figure {
 
   .product-card__title a:hover {
     color: #F01C24;
+  }
+
+  .products__category a:hover {
+    opacity: 0.7;
   }
 
   .contact-box__social a:hover {
